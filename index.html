@@ -82,7 +82,8 @@
         <a href="https://github.com/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">GitHub</a>
         <!-- TODO: Q to confirm LinkedIn URL -->
         <a href="https://www.linkedin.com/in/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">LinkedIn</a>
-        <a href="#contact" class="bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Contact</a>
+        <!-- href assembled at runtime in js/main.js to keep the address out of the static HTML -->
+        <a href="#contact" class="js-email bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Email</a>
       </div>
     </section>
 
@@ -108,8 +109,10 @@
           tooling without weakening the controls a regulated firm has to maintain.
         </p>
         <p>
-          I hold an MEng from Imperial College London.
-          <!-- TODO: Q to confirm degree subject and graduation year -->
+          I came to software from engineering of a different kind: an MEng in Aerospace
+          Materials from Imperial College London, then a graduate year examining
+          superalloys bound for jet engines. Metallurgy and software quality turn out to
+          have the same core question, which is how things fail under stress.
         </p>
       </div>
     </section>
@@ -122,10 +125,11 @@
         <div>
           <h3 class="font-mono text-sm font-semibold uppercase tracking-wider">Automation</h3>
           <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
-            <li>TypeScript</li>
+            <li>TypeScript &amp; JavaScript</li>
             <li>Playwright</li>
             <li>API &amp; contract testing</li>
-            <li>CI-integrated quality gates</li>
+            <li>Mobile: Appium, Maestro</li>
+            <li>Java, Python, SQL</li>
           </ul>
         </div>
         <div>
@@ -149,6 +153,7 @@
           <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
             <li>Digital asset custody</li>
             <li>Travel Rule &amp; compliance testing</li>
+            <li>Payments: Apple Pay &amp; Google Pay launches</li>
             <li>Islamic finance literacy</li>
           </ul>
         </div>
@@ -164,14 +169,14 @@
 
         <article>
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">
-            <!-- TODO: Q to confirm start year -->
+            <!-- TODO: Q to confirm start date (CV ends July 2024) -->
             20XX to present
           </p>
-          <h3 class="mt-1 text-lg font-semibold">
-            Senior SDET ·
+          <h3 class="mt-1 text-lg font-semibold">Senior SDET</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">
             <!-- TODO: Q to confirm how to name current employer (or keep generic) -->
             Digital asset custody firm
-          </h3>
+          </p>
           <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Own compliance-critical quality gates for a regulated digital asset custody platform.</li>
             <li>Built API-first automated coverage in TypeScript/Playwright for core custody and compliance services, including Travel Rule flows.</li>
@@ -181,16 +186,54 @@
         </article>
 
         <article>
-          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">
-            <!-- TODO: Q to fill in dates -->
-            20XX to 20XX
-          </p>
-          <h3 class="mt-1 text-lg font-semibold">
-            <!-- TODO: Q to fill in previous role(s) and employer(s); brief only covers the current role -->
-            Earlier roles in regulated fintech
-          </h3>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Feb 2024 to Jul 2024</p>
+          <h3 class="mt-1 text-lg font-semibold">Lead QA / SDET (contract)</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Visible</p>
           <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
-            <li><!-- TODO: Q to fill in --> Details to follow.</li>
+            <li>Led the QA effort across the company and product, covering manual, exploratory and automated testing.</li>
+            <li>Built a mobile automation framework from the ground up with Maestro, speeding up release times by 1000%.</li>
+          </ul>
+        </article>
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Sep 2022 to Jan 2024</p>
+          <h3 class="mt-1 text-lg font-semibold">Lead SDET</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Playroll (part of VAT IT Group)</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li>First QA hire; established the quality practice across the company and product.</li>
+            <li>Built a web automation framework from scratch in TypeScript with Playwright and wired it into the GitHub Actions CI/CD pipeline, speeding up release times by 900%.</li>
+            <li>Ran and triaged nightly Playwright suites, and managed a small team working directly with the CTO and Head of Engineering.</li>
+          </ul>
+        </article>
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">May 2022 to Aug 2022</p>
+          <h3 class="mt-1 text-lg font-semibold">SDET</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Crypto.com</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li>Planned and led testing and live proving of Apple Pay and Google Pay, released first to the US and then worldwide to over 50 million users.</li>
+            <li>Helped plan shift-left initiatives to improve QA impact across the development lifecycle.</li>
+          </ul>
+        </article>
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Dec 2018 to Apr 2022</p>
+          <h3 class="mt-1 text-lg font-semibold">QA Engineer (promoted from Junior QA Engineer)</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Moneybox</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li>Contributed to the Java/Appium/Cucumber automation suite for over two years: new feature coverage, test maintenance and pull request reviews.</li>
+            <li>Planned and led end-to-end testing and live proving of major features, including six new funds that took customer deposits past £2.4m.</li>
+            <li>Interviewed almost 200 candidates as the QA team grew from one (me) to almost thirty.</li>
+            <li>Tested the iOS and Android apps, backend APIs with Postman and databases with SQL, across more than 50 releases.</li>
+          </ul>
+        </article>
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Oct 2017 to Nov 2018</p>
+          <h3 class="mt-1 text-lg font-semibold">Graduate Materials Engineer</h3>
+          <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Wyman Gordon</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li>Microstructural examination of nickel and titanium alloys for aerospace production; technical lead on projects introducing new parts for customers including Rolls-Royce.</li>
           </ul>
         </article>
 
@@ -217,15 +260,14 @@
       <p class="font-mono text-sm text-accent dark:text-accent-bright">05 / contact</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">Get in touch</h2>
       <p class="mt-6 max-w-xl leading-relaxed text-ink-muted dark:text-fog-muted">
-        The fastest route is LinkedIn or email. If you're hiring for quality engineering
-        in fintech or digital assets, I'm always happy to talk.
+        Based in London. If you're hiring for quality engineering in fintech or digital
+        assets, or want to talk testing and AI tooling, email is the fastest way to
+        reach me. GitHub and LinkedIn are linked at the top of the page.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-4 font-mono text-sm">
-        <!-- TODO: Q to confirm LinkedIn URL -->
-        <a href="https://www.linkedin.com/in/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">LinkedIn</a>
-        <a href="https://github.com/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">GitHub</a>
-        <!-- href assembled at runtime in js/main.js to keep the address out of the static HTML -->
-        <a id="email-link" href="#contact" class="bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Email</a>
+        <!-- href and address text assembled at runtime in js/main.js to keep them out of the static HTML -->
+        <a href="#contact" class="js-email bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Email me</a>
+        <span id="email-text" class="text-ink-muted dark:text-fog-muted"></span>
       </div>
       <noscript>
         <p class="mt-4 font-mono text-sm text-ink-muted dark:text-fog-muted">email: qasimm999 [at] gmail [dot] com</p>

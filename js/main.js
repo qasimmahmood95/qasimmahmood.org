@@ -108,15 +108,17 @@ function initMobileNav() {
 // ---------------------------------------------------------------------------
 // Email is assembled at runtime so the address isn't in the static HTML.
 // ---------------------------------------------------------------------------
-function initEmailLink() {
-  const link = document.getElementById("email-link");
-  if (!link) return;
+function initEmailLinks() {
   const address = ["qasimm999", "gmail.com"].join("@");
-  link.href = "mailto:" + address;
+  document.querySelectorAll("a.js-email").forEach((link) => {
+    link.href = "mailto:" + address;
+  });
+  const text = document.getElementById("email-text");
+  if (text) text.textContent = address;
 }
 
 renderCertifications();
 initThemeToggle();
 initMobileNav();
-initEmailLink();
+initEmailLinks();
 document.getElementById("year").textContent = String(new Date().getFullYear());
