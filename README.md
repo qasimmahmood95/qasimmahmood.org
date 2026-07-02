@@ -11,6 +11,7 @@ Plain HTML + Tailwind CSS v4, vanilla JS. No framework, no CMS, no tracking.
 
 ```
 index.html      the whole site (single page)
+links.html      link-in-bio page, served at /links; edit the LINKS array inside it
 404.html        custom not-found page (Cloudflare Pages serves it automatically)
 src/input.css   Tailwind source (theme tokens, dark-mode variant, print styles)
 css/site.css    compiled CSS (committed, rebuilt on deploy)

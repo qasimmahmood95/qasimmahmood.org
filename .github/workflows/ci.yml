@@ -23,13 +23,13 @@ jobs:
         run: npm run build
 
       - name: Validate HTML
-        run: npx --yes html-validate index.html 404.html
+        run: npx --yes html-validate index.html 404.html links.html
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
           # LinkedIn returns 999 to bots, so it can't be checked automatically.
-          args: --no-progress --exclude 'linkedin\.com' index.html 404.html
+          args: --no-progress --exclude 'linkedin\.com' index.html 404.html links.html
           fail: true
 
       - name: Install Playwright browser
