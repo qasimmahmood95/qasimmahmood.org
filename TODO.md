@@ -23,6 +23,11 @@ are reviews and launch steps rather than gaps.
 - [ ] **"Now" strip**: two items are real; add or update (cert in progress, reading, talks).
 - [ ] **Footer "View source" link**: points at the GitHub profile; update to the repo URL once pushed.
 
+- [ ] **CV PDF**: `assets/Qasim_Mahmood_CV.pdf` is generated from the CV docx with the
+      phone number removed. Regenerate it whenever the CV changes.
+- [ ] **OG image**: `assets/og.png` is generated (1200x630). After deploying, paste the
+      site URL into LinkedIn's Post Inspector to confirm the card renders.
+
 ## Before/at launch
 
 - [ ] Create the GitHub repo under `qasimmahmood95` and push (`git remote add origin ... && git push -u origin main`).

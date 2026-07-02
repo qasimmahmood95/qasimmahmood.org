@@ -23,11 +23,11 @@ jobs:
         run: npm run build
 
       - name: Validate HTML
-        run: npx --yes html-validate index.html
+        run: npx --yes html-validate index.html 404.html
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
           # LinkedIn returns 999 to bots, so it can't be checked automatically.
-          args: --no-progress --exclude 'linkedin\.com' index.html
+          args: --no-progress --exclude 'linkedin\.com' index.html 404.html
           fail: true

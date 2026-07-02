@@ -217,6 +217,7 @@ function initCommandPalette() {
     { label: "theme / toggle dark mode", run: () => document.getElementById("theme-toggle").click() },
     { label: "email / compose", run: () => { location.href = "mailto:" + EMAIL; } },
     { label: "email / copy address", run: () => { copyEmail().catch(() => {}); } },
+    { label: "open / cv (pdf)", run: () => window.open("assets/Qasim_Mahmood_CV.pdf", "_blank", "noopener") },
     { label: "open / github", run: () => window.open("https://github.com/qasimmahmood95", "_blank", "noopener") },
     { label: "open / linkedin", run: () => window.open("https://www.linkedin.com/in/qmahmood95", "_blank", "noopener") },
   ];

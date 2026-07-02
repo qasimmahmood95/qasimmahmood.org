@@ -8,11 +8,13 @@ Plain HTML + Tailwind CSS v4, vanilla JS. No framework, no CMS, no tracking.
 
 ```
 index.html      the whole site (single page)
-src/input.css   Tailwind source (theme tokens, dark-mode variant)
+404.html        custom not-found page (Cloudflare Pages serves it automatically)
+src/input.css   Tailwind source (theme tokens, dark-mode variant, print styles)
 css/site.css    compiled CSS (committed, rebuilt on deploy)
 js/main.js      dark-mode toggle, mobile nav, certifications data, email links,
                 scroll effects (progress bar, scrollspy, section reveals),
                 command palette (ctrl/cmd+k)
+assets/         og.png social card, public CV PDF (phone number removed)
 ```
 
 To **add a certification**, add one line to the `CERTIFICATIONS` array in

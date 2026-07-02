@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 | Qasim Mahmood</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e7466'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%23faf9f6' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/site.css">
+  <script>
+    (function () {
+      var stored = localStorage.getItem("theme");
+      var dark = stored ? stored === "dark"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (dark) document.documentElement.classList.add("dark");
+    })();
+  </script>
+</head>
+<body class="bg-paper text-ink dark:bg-coal dark:text-fog font-sans antialiased">
+  <main class="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-5 py-20">
+    <p class="font-mono text-sm text-accent dark:text-accent-bright">404 / test failed</p>
+    <h1 class="mt-4 text-3xl font-bold tracking-tight">Element not found</h1>
+    <div class="mt-6 space-y-1 font-mono text-sm text-ink-muted dark:text-fog-muted">
+      <p>expected: the page you requested</p>
+      <p>actual:&nbsp;&nbsp; nothing at this address</p>
+    </div>
+    <p class="mt-8">
+      <a href="/" class="border border-line px-4 py-2 font-mono text-sm hover:border-accent hover:text-accent dark:border-line-dark dark:hover:border-accent-bright dark:hover:text-accent-bright">rerun from the start</a>
+    </p>
+  </main>
+</body>
+</html>
