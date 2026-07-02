@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qasim Mahmood — Senior SDET · Regulated Fintech &amp; Digital Assets</title>
+  <meta name="description" content="Senior SDET specialising in quality engineering for regulated fintech and digital asset custody — TypeScript, Playwright, API-first testing, and pragmatic AI tooling.">
+  <link rel="canonical" href="https://qasimmahmood.org/">
+  <meta property="og:title" content="Qasim Mahmood — Senior SDET">
+  <meta property="og:description" content="Quality engineering for regulated fintech and digital asset custody. TypeScript, Playwright, API-first testing, AI tooling.">
+  <meta property="og:url" content="https://qasimmahmood.org/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e7466'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%23faf9f6' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+    // Set theme before first paint to avoid a flash of the wrong mode.
+    (function () {
+      var stored = localStorage.getItem("theme");
+      var dark = stored ? stored === "dark"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (dark) document.documentElement.classList.add("dark");
+    })();
+  </script>
+</head>
+<body class="bg-paper text-ink dark:bg-coal dark:text-fog font-sans antialiased">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
+
+  <header class="sticky top-0 z-40 border-b border-line dark:border-line-dark bg-paper/95 dark:bg-coal/95 backdrop-blur-sm">
+    <nav class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3" aria-label="Main">
+      <a href="#top" class="font-mono text-sm font-semibold tracking-tight hover:text-accent dark:hover:text-accent-bright">q.mahmood</a>
+
+      <div class="flex items-center gap-1 sm:gap-4">
+        <ul id="nav-links" class="hidden sm:flex items-center gap-5 font-mono text-xs text-ink-muted dark:text-fog-muted">
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#about">about</a></li>
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#skills">skills</a></li>
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#experience">experience</a></li>
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#certifications">certifications</a></li>
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#contact">contact</a></li>
+        </ul>
+
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+          class="rounded p-2 text-ink-muted hover:text-ink dark:text-fog-muted dark:hover:text-fog">
+          <svg class="hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+          <svg class="block dark:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+          </svg>
+        </button>
+
+        <button id="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile"
+          class="rounded p-2 text-ink-muted hover:text-ink dark:text-fog-muted dark:hover:text-fog sm:hidden">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <ul id="nav-mobile" class="hidden border-t border-line dark:border-line-dark px-5 py-3 font-mono text-sm sm:hidden" aria-label="Mobile">
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#about">about</a></li>
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#skills">skills</a></li>
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#experience">experience</a></li>
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#certifications">certifications</a></li>
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#contact">contact</a></li>
+    </ul>
+  </header>
+
+  <main id="main" class="mx-auto max-w-3xl px-5">
+
+    <!-- Hero -->
+    <section id="top" class="py-20 sm:py-28">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">senior sdet · regulated fintech · digital assets</p>
+      <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">Qasim Mahmood</h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted dark:text-fog-muted">
+        I build the quality gates that let regulated digital asset platforms ship with
+        confidence — API-first test automation in TypeScript and Playwright, backed by
+        pragmatic AI tooling.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4 font-mono text-sm">
+        <a href="https://github.com/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">GitHub</a>
+        <!-- TODO: Q to confirm LinkedIn URL -->
+        <a href="https://www.linkedin.com/in/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">LinkedIn</a>
+        <a href="#contact" class="bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Contact</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">01 / about</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight">Quality engineering where it can't be optional</h2>
+      <div class="mt-6 space-y-4 leading-relaxed text-ink-muted dark:text-fog-muted">
+        <p>
+          I'm a Senior Software Development Engineer in Test with around seven years in
+          regulated fintech, currently focused on digital asset custody. My work sits at
+          the high-stakes end of quality: the release gates, contract coverage and
+          compliance-critical test suites that stand between a regulated platform and a
+          very bad day.
+        </p>
+        <p>
+          I work primarily in TypeScript with Playwright, and I test API-first — the UI
+          is the last mile, not the foundation. That means deep coverage of the services
+          that move and safeguard client assets, including the compliance flows (Travel
+          Rule among them) that regulators actually audit.
+        </p>
+        <p>
+          More recently I've been leading AI adoption inside a regulated environment —
+          running an internal advocacy initiative that gets AI tooling into engineers'
+          hands with the guardrails a compliance-conscious firm needs. The interesting
+          problem isn't whether AI speeds up testing; it's how to adopt it without
+          weakening the controls the business depends on.
+        </p>
+        <p>
+          I hold an MEng from Imperial College London.
+          <!-- TODO: Q to confirm degree subject and graduation year -->
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">02 / skills &amp; tools</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight">What I work with</h2>
+      <div class="mt-8 grid gap-10 sm:grid-cols-2">
+        <div>
+          <h3 class="font-mono text-sm font-semibold uppercase tracking-wider">Automation</h3>
+          <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
+            <li>TypeScript</li>
+            <li>Playwright</li>
+            <li>API &amp; contract testing</li>
+            <li>CI-integrated quality gates</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold uppercase tracking-wider">Cloud</h3>
+          <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
+            <li>AWS</li>
+            <li>Azure</li>
+            <li>Google Cloud</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold uppercase tracking-wider">DevOps</h3>
+          <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
+            <li>GitHub Actions</li>
+            <li>Docker</li>
+            <li>Kubernetes / k3s</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold uppercase tracking-wider">Domain</h3>
+          <ul class="mt-3 space-y-2 text-ink-muted dark:text-fog-muted">
+            <li>Digital asset custody</li>
+            <li>Travel Rule &amp; compliance testing</li>
+            <li>Islamic finance literacy</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">03 / experience</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight">Where I've worked</h2>
+
+      <div class="mt-8 space-y-12 border-l-2 border-line dark:border-line-dark pl-6">
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">
+            <!-- TODO: Q to confirm start year -->
+            20XX — present
+          </p>
+          <h3 class="mt-1 text-lg font-semibold">
+            Senior SDET ·
+            <!-- TODO: Q to confirm how to name current employer (or keep generic) -->
+            Digital asset custody firm
+          </h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li>Own compliance-critical quality gates for a regulated digital asset custody platform.</li>
+            <li>Built API-first automated coverage in TypeScript/Playwright for core custody and compliance services, including Travel Rule flows.</li>
+            <li>Lead an internal AI advocacy initiative, driving safe adoption of AI tooling across engineering in a regulated environment.</li>
+            <!-- TODO: Q to add concrete metrics/achievements (e.g. release cadence, coverage, incidents caught) — nothing invented here -->
+          </ul>
+        </article>
+
+        <article>
+          <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">
+            <!-- TODO: Q to fill in dates -->
+            20XX — 20XX
+          </p>
+          <h3 class="mt-1 text-lg font-semibold">
+            <!-- TODO: Q to fill in previous role(s) and employer(s) — brief only covers the current role -->
+            Earlier roles in regulated fintech
+          </h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+            <li><!-- TODO: Q to fill in --> Details to follow.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Certifications (rendered from the array in js/main.js) -->
+    <section id="certifications" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">04 / certifications</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight">Certifications</h2>
+      <div id="certs-root" class="mt-8 space-y-10"></div>
+      <noscript>
+        <p class="mt-8 text-ink-muted dark:text-fog-muted">
+          AWS Solutions Architect Associate · AWS AI Practitioner · AWS ML Engineer Associate ·
+          Azure Fundamentals (AZ-900) · Azure AI Fundamentals · Microsoft SC-900 ·
+          Google Cloud Digital Leader · ISTQB CTFL · ISTQB Agile · ISTQB Advanced Test Analyst ·
+          GitHub Actions · GitHub Advanced Security · GitHub Foundations · AUSCIF Islamic Finance
+        </p>
+      </noscript>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">05 / contact</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight">Get in touch</h2>
+      <p class="mt-6 max-w-xl leading-relaxed text-ink-muted dark:text-fog-muted">
+        The fastest route is LinkedIn or email. If you're hiring for quality engineering
+        in fintech or digital assets, I'm always happy to talk.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4 font-mono text-sm">
+        <!-- TODO: Q to confirm LinkedIn URL -->
+        <a href="https://www.linkedin.com/in/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">LinkedIn</a>
+        <a href="https://github.com/qasimmahmood95" class="border border-line dark:border-line-dark px-4 py-2 hover:border-accent hover:text-accent dark:hover:border-accent-bright dark:hover:text-accent-bright">GitHub</a>
+        <!-- href assembled at runtime in js/main.js to keep the address out of the static HTML -->
+        <a id="email-link" href="#contact" class="bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Email</a>
+      </div>
+      <noscript>
+        <p class="mt-4 font-mono text-sm text-ink-muted dark:text-fog-muted">email: qasimm999 [at] gmail [dot] com</p>
+      </noscript>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-line dark:border-line-dark">
+    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-5 py-6 font-mono text-xs text-ink-muted dark:text-fog-muted">
+      <p>© <span id="year">2026</span> Qasim Mahmood</p>
+      <p>Plain HTML + Tailwind. No framework, no tracking.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
