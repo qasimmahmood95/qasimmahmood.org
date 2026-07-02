@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build
+
+      - name: Validate HTML
+        run: npx --yes html-validate index.html
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # LinkedIn returns 999 to bots, so it can't be checked automatically.
+          args: --no-progress --exclude 'linkedin\.com' index.html
+          fail: true
