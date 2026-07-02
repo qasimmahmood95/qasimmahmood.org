@@ -10,7 +10,9 @@ Plain HTML + Tailwind CSS v4, vanilla JS. No framework, no CMS, no tracking.
 index.html      the whole site (single page)
 src/input.css   Tailwind source (theme tokens, dark-mode variant)
 css/site.css    compiled CSS (committed, rebuilt on deploy)
-js/main.js      dark-mode toggle, mobile nav, certifications data, email link
+js/main.js      dark-mode toggle, mobile nav, certifications data, email links,
+                scroll effects (progress bar, scrollspy, section reveals),
+                command palette (ctrl/cmd+k)
 ```
 
 To **add a certification**, add one line to the `CERTIFICATIONS` array in

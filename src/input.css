@@ -34,3 +34,40 @@ html {
   background-color: var(--color-accent);
   color: var(--color-paper);
 }
+
+/* Anchored sections stop below the sticky header */
+section[id] {
+  scroll-margin-top: 3.5rem;
+}
+
+/* Scrollspy: js/main.js sets aria-current on the nav link for the visible section */
+#nav-links a[aria-current] {
+  color: var(--color-accent);
+}
+.dark #nav-links a[aria-current] {
+  color: var(--color-accent-bright);
+}
+
+/* Entrance animation: .reveal is only added by JS when motion is allowed,
+   so content stays visible without JS and for reduced-motion users */
+.reveal {
+  opacity: 0;
+  translate: 0 12px;
+  transition: opacity 0.6s ease, translate 0.6s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .js-check {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}

@@ -24,6 +24,8 @@
 </head>
 <body class="bg-paper text-ink dark:bg-coal dark:text-fog font-sans antialiased">
 
+  <div id="progress" class="fixed left-0 top-0 z-50 h-0.5 w-0 bg-accent dark:bg-accent-bright" aria-hidden="true"></div>
+
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
 
   <header class="sticky top-0 z-40 border-b border-line dark:border-line-dark bg-paper/95 dark:bg-coal/95 backdrop-blur-sm">
@@ -38,6 +40,9 @@
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#certifications">certifications</a></li>
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#contact">contact</a></li>
         </ul>
+
+        <button id="cmdk-open" type="button" aria-label="Open command palette"
+          class="hidden items-center gap-1 border border-line px-2 py-1 font-mono text-xs text-ink-muted hover:border-accent hover:text-accent dark:border-line-dark dark:text-fog-muted dark:hover:border-accent-bright dark:hover:text-accent-bright sm:flex">ctrl k</button>
 
         <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
           class="rounded p-2 text-ink-muted hover:text-ink dark:text-fog-muted dark:hover:text-fog">
@@ -87,9 +92,20 @@
       </div>
     </section>
 
+    <!-- Now: unnumbered strip; swap for a Projects section later without renumbering -->
+    <section id="now" class="border-t border-line dark:border-line-dark py-10">
+      <p class="font-mono text-sm text-accent dark:text-accent-bright">now</p>
+      <ul class="mt-4 space-y-2 font-mono text-sm text-ink-muted dark:text-fog-muted">
+        <li>Leading an AI adoption initiative at a regulated digital asset custodian</li>
+        <li>Rebuilding this site by hand; a projects section is next</li>
+        <!-- TODO: Q to add/update current items (cert in progress, reading, talks) -->
+      </ul>
+    </section>
+
     <!-- About -->
-    <section id="about" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <p class="font-mono text-sm text-accent dark:text-accent-bright">01 / about</p>
+    <section id="about" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">01</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>01 / about</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">Background</h2>
       <div class="mt-6 space-y-4 leading-relaxed text-ink-muted dark:text-fog-muted">
         <p>
@@ -118,8 +134,9 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <p class="font-mono text-sm text-accent dark:text-accent-bright">02 / skills &amp; tools</p>
+    <section id="skills" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">02</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>02 / skills &amp; tools</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">What I work with</h2>
       <div class="mt-8 grid gap-10 sm:grid-cols-2">
         <div>
@@ -161,8 +178,9 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <p class="font-mono text-sm text-accent dark:text-accent-bright">03 / experience</p>
+    <section id="experience" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">03</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>03 / experience</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">Where I've worked</h2>
 
       <div class="mt-8 space-y-12 border-l-2 border-line dark:border-line-dark pl-6">
@@ -241,8 +259,9 @@
     </section>
 
     <!-- Certifications (rendered from the array in js/main.js) -->
-    <section id="certifications" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <p class="font-mono text-sm text-accent dark:text-accent-bright">04 / certifications</p>
+    <section id="certifications" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">04</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>04 / certifications</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">Certifications</h2>
       <div id="certs-root" class="mt-8 space-y-10"></div>
       <noscript>
@@ -256,8 +275,9 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <p class="font-mono text-sm text-accent dark:text-accent-bright">05 / contact</p>
+    <section id="contact" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">05</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>05 / contact</p>
       <h2 class="mt-3 text-2xl font-bold tracking-tight">Get in touch</h2>
       <p class="mt-6 max-w-xl leading-relaxed text-ink-muted dark:text-fog-muted">
         Based in London. If you're hiring for quality engineering in fintech or digital
@@ -267,7 +287,8 @@
       <div class="mt-8 flex flex-wrap items-center gap-4 font-mono text-sm">
         <!-- href and address text assembled at runtime in js/main.js to keep them out of the static HTML -->
         <a href="#contact" class="js-email bg-accent px-4 py-2 text-paper hover:opacity-90 dark:bg-accent-bright dark:text-coal">Email me</a>
-        <span id="email-text" class="text-ink-muted dark:text-fog-muted"></span>
+        <button id="email-text" type="button" title="Copy address" aria-label="Copy email address"
+          class="hidden text-ink-muted underline decoration-dotted underline-offset-4 hover:text-accent dark:text-fog-muted dark:hover:text-accent-bright"></button>
       </div>
       <noscript>
         <p class="mt-4 font-mono text-sm text-ink-muted dark:text-fog-muted">email: qasimm999 [at] gmail [dot] com</p>
@@ -277,11 +298,26 @@
   </main>
 
   <footer class="border-t border-line dark:border-line-dark">
-    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-5 py-6 font-mono text-xs text-ink-muted dark:text-fog-muted">
+    <div class="mx-auto flex max-w-3xl flex-col gap-2 px-5 py-6 font-mono text-xs text-ink-muted dark:text-fog-muted sm:flex-row sm:items-center sm:justify-between">
       <p>© <span id="year">2026</span> Qasim Mahmood</p>
-      <p>Plain HTML + Tailwind. No framework, no tracking.</p>
+      <p>
+        Hand-built with HTML and Tailwind, pair-programmed with Claude Code,
+        deployed on Cloudflare Pages. No framework, no tracking.
+        <!-- TODO: point this at the site repo once it exists on GitHub -->
+        <a href="https://github.com/qasimmahmood95" class="underline decoration-dotted underline-offset-4 hover:text-accent dark:hover:text-accent-bright">View source</a>
+      </p>
     </div>
   </footer>
+
+  <dialog id="cmdk"
+    class="mx-auto mt-[18vh] w-full max-w-md border border-line bg-paper p-0 text-ink backdrop:bg-ink/40 dark:border-line-dark dark:bg-coal-raised dark:text-fog">
+    <div class="border-b border-line p-3 dark:border-line-dark">
+      <input id="cmdk-input" type="text" placeholder="type a command or section" autocomplete="off" spellcheck="false"
+        aria-label="Search commands"
+        class="w-full bg-transparent font-mono text-sm text-ink outline-none placeholder:text-ink-muted dark:text-fog dark:placeholder:text-fog-muted">
+    </div>
+    <ul id="cmdk-list" class="max-h-72 overflow-y-auto p-2 font-mono text-sm"></ul>
+  </dialog>
 
   <script src="js/main.js" defer></script>
 </body>

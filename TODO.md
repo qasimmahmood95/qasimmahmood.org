@@ -18,6 +18,8 @@ Each remaining item has a matching `<!-- TODO -->` comment in `index.html` where
 - [ ] **Certification names**: check they match the actual certs, especially the ISTQB Agile one and "AUSCIF Islamic Finance". The site lists more certs than the CV (per the brief); the CV only has AZ-900 + three ISTQB, so update whichever is stale.
 - [ ] **Email**: `qasimm999@gmail.com` is shown publicly (assembled at runtime). The CV placeholder says "[Email address]", so confirm this is the one to publish.
 - [ ] **Favicon**: currently a minimal teal "Q" monogram (inline SVG). Replace if wanted.
+- [ ] **"Now" strip**: two items are real; add or update (cert in progress, reading, talks).
+- [ ] **Footer "View source" link**: points at the GitHub profile; update to the repo URL once pushed.
 
 ## Before/at launch
 
