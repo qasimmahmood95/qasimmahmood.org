@@ -40,6 +40,49 @@ section[id] {
   scroll-margin-top: 3.5rem;
 }
 
+/* Smoother hover states across all interactive elements */
+a,
+button {
+  transition: color 0.15s ease, border-color 0.15s ease,
+    background-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Faint dot grid behind the hero, fading out towards the bottom */
+#top {
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+.dark #top {
+  background-image: radial-gradient(var(--color-line-dark) 1px, transparent 1px);
+}
+
+/* Timeline nodes: a dot centred on the experience border at each entry */
+#experience article {
+  position: relative;
+}
+#experience article::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 5px);
+  top: 0.3rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+}
+.dark #experience article::before {
+  background-color: var(--color-accent-bright);
+}
+
+/* Certification cards pick up the accent on hover */
+#certs-root li:hover {
+  border-color: var(--color-accent);
+}
+.dark #certs-root li:hover {
+  border-color: var(--color-accent-bright);
+}
+
 /* Scrollspy: js/main.js sets aria-current on the nav link for the visible section */
 #nav-links a[aria-current] {
   color: var(--color-accent);
@@ -69,5 +112,48 @@ section[id] {
     opacity: 1;
     translate: 0 0;
     transition: none;
+  }
+  a,
+  button {
+    transition: none;
+  }
+}
+
+/* Print: a clean black-on-white summary, regardless of theme */
+@media print {
+  body,
+  body * {
+    background: transparent !important;
+    color: #111 !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  header,
+  #progress,
+  footer,
+  dialog,
+  noscript,
+  .js-check,
+  .js-email,
+  main section > span[aria-hidden] {
+    display: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+  }
+  #top {
+    background-image: none;
+    mask-image: none;
+  }
+  #experience article,
+  #certs-root li {
+    break-inside: avoid;
+  }
+  /* Show where the hero links go */
+  #top a[href^="https://"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
   }
 }
