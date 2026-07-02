@@ -1,5 +1,5 @@
 // Assembled at runtime so the address isn't in the static HTML.
-const EMAIL = ["qasimm999", "gmail.com"].join("@");
+const EMAIL = ["qasim.mahmood13", "alumni.imperial.ac.uk"].join("@");
 
 // ---------------------------------------------------------------------------
 // Certifications: add a cert by adding one line to the relevant group.
@@ -36,6 +36,7 @@ const CERTIFICATIONS = [
   {
     group: "Other",
     items: [
+      { name: "Claude Code Essentials", issuer: "Anthropic" },
       { name: "Islamic Finance", issuer: "AUSCIF" },
     ],
   },
@@ -217,7 +218,7 @@ function initCommandPalette() {
     { label: "email / compose", run: () => { location.href = "mailto:" + EMAIL; } },
     { label: "email / copy address", run: () => { copyEmail().catch(() => {}); } },
     { label: "open / github", run: () => window.open("https://github.com/qasimmahmood95", "_blank", "noopener") },
-    { label: "open / linkedin", run: () => window.open("https://www.linkedin.com/in/qasimmahmood95", "_blank", "noopener") },
+    { label: "open / linkedin", run: () => window.open("https://www.linkedin.com/in/qmahmood95", "_blank", "noopener") },
   ];
 
   let matches = commands;
