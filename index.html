@@ -50,12 +50,13 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
 
   <header class="sticky top-0 z-40 border-b border-line dark:border-line-dark bg-paper/95 dark:bg-coal/95 backdrop-blur-sm">
-    <nav class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3" aria-label="Main">
+    <nav class="mx-auto flex max-w-4xl items-center justify-between px-5 py-3" aria-label="Main">
       <a href="#top" class="font-mono text-sm font-semibold tracking-tight hover:text-accent dark:hover:text-accent-bright">q.mahmood</a>
 
       <div class="flex items-center gap-1 sm:gap-4">
         <ul id="nav-links" class="hidden sm:flex items-center gap-5 font-mono text-xs text-ink-muted dark:text-fog-muted">
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#about">about</a></li>
+          <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#approach">approach</a></li>
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#skills">skills</a></li>
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#experience">experience</a></li>
           <li><a class="hover:text-accent dark:hover:text-accent-bright" href="#certifications">certifications</a></li>
@@ -86,6 +87,7 @@
 
     <ul id="nav-mobile" class="hidden border-t border-line dark:border-line-dark px-5 py-3 font-mono text-sm sm:hidden">
       <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#about">about</a></li>
+      <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#approach">approach</a></li>
       <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#skills">skills</a></li>
       <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#experience">experience</a></li>
       <li><a class="block py-2 hover:text-accent dark:hover:text-accent-bright" href="#certifications">certifications</a></li>
@@ -93,13 +95,13 @@
     </ul>
   </header>
 
-  <main id="main" class="mx-auto max-w-3xl px-5">
+  <main id="main" class="mx-auto max-w-4xl px-5">
 
     <!-- Hero -->
     <section id="top" class="py-20 sm:py-28">
       <p class="font-mono text-sm text-accent dark:text-accent-bright">senior sdet / regulated fintech / digital assets</p>
       <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">Qasim Mahmood</h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted dark:text-fog-muted">
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted dark:text-fog-muted">
         I test the platforms that hold and move digital assets: TypeScript and
         Playwright frameworks built from the ground up, testing below the UI where
         it counts, plus AI tooling that works within the constraints of a regulated
@@ -128,7 +130,7 @@
       <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">01</span>
       <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>01 / about</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight">Background</h2>
-      <div class="mt-6 space-y-4 leading-relaxed text-ink-muted dark:text-fog-muted">
+      <div class="mt-6 max-w-2xl space-y-4 leading-relaxed text-ink-muted dark:text-fog-muted">
         <p>
           I'm a Senior Software Development Engineer in Test with more than seven years
           in regulated fintech, currently focused on digital asset custody. Most of my work
@@ -155,10 +157,52 @@
       </div>
     </section>
 
+    <!-- Approach -->
+    <section id="approach" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">02</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>02 / approach</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight">How I test</h2>
+      <div class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent dark:text-accent-bright">01 / below the UI where it counts</h3>
+          <p class="mt-2 leading-relaxed text-ink-muted dark:text-fog-muted">
+            UI checks prove the journey works; the risky logic lives in the services
+            underneath. When hardware makes a test flaky, I take the hardware out of
+            the loop, as with simulating biometric payloads over API instead of
+            driving physical devices.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent dark:text-accent-bright">02 / compliance gates as code</h3>
+          <p class="mt-2 leading-relaxed text-ink-muted dark:text-fog-muted">
+            Rules that matter to regulators, such as the Travel Rule, become
+            executable checks in the release pipeline rather than lines in a test
+            plan. If a change would breach one, it does not ship.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent dark:text-accent-bright">03 / frameworks are products</h3>
+          <p class="mt-2 leading-relaxed text-ink-muted dark:text-fog-muted">
+            I've built automation from zero four times across web, mobile, API and
+            load. A framework earns its keep when other engineers can write, run and
+            trust tests without me in the room.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent dark:text-accent-bright">04 / ai with guardrails</h3>
+          <p class="mt-2 leading-relaxed text-ink-muted dark:text-fog-muted">
+            I use AI tooling daily and lead its adoption at work. The point is speed
+            without surrendering the controls a regulated firm depends on; adoption
+            and caution are not opposites.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Skills -->
     <section id="skills" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">02</span>
-      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>02 / skills &amp; tools</p>
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">03</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>03 / skills &amp; tools</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight">What I work with</h2>
       <div class="mt-8 grid gap-10 sm:grid-cols-2">
         <div>
@@ -202,8 +246,8 @@
 
     <!-- Experience -->
     <section id="experience" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">03</span>
-      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>03 / experience</p>
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">04</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>04 / experience</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight">Where I've worked</h2>
 
       <div class="mt-8 space-y-12 border-l-2 border-line dark:border-line-dark pl-6">
@@ -212,20 +256,31 @@
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Sep 2024 to present</p>
           <h3 class="mt-1 text-lg font-semibold">Senior SDET</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Zodia Custody</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Built automation frameworks from the ground up in TypeScript with Playwright, decoupling testing from physical devices, plus a k6 framework for load and performance testing.</li>
             <li>Engineered a headless automation strategy for mobile-to-web handshakes (MFA and QR), simulating biometric payloads via API to achieve 100% CI/CD reliability without hardware dependencies.</li>
             <li>Built the test harness for the first institutional IOTA Rebased staking implementation in the UK and ADGM.</li>
             <li>Built the automated compliance gates for the FATF Travel Rule (Notabene) integration, intercepting and validating VASP-to-VASP data payloads to prevent regulatory breaches in settlement flows.</li>
             <li>Lead an internal AI advocacy initiative, driving safe adoption of AI tooling across engineering in a regulated environment.</li>
           </ul>
+          <details class="mt-4 max-w-2xl">
+            <summary class="cursor-pointer font-mono text-xs text-accent hover:underline dark:text-accent-bright">case study / the headless handshake</summary>
+            <p class="mt-3 border-l-2 border-line pl-4 text-sm leading-relaxed text-ink-muted dark:border-line-dark dark:text-fog-muted">
+              Custody journeys here hop between mobile and web, with MFA and QR
+              handshakes in the middle. Driving real devices made those flows slow
+              and unreliable in CI, so I built a headless strategy instead: the
+              framework simulates the biometric payloads over API and carries the
+              rest of the journey in the browser. Flows that once depended on
+              physical hardware now run on every pipeline at 100% reliability.
+            </p>
+          </details>
         </article>
 
         <article>
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Feb 2024 to Jul 2024</p>
           <h3 class="mt-1 text-lg font-semibold">Lead QA / SDET (contract)</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Visible</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Led the QA effort across the company and product, covering manual, exploratory and automated testing.</li>
             <li>Built a mobile automation framework from the ground up with Maestro, speeding up release times by 1000%.</li>
           </ul>
@@ -235,18 +290,29 @@
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Sep 2022 to Jan 2024</p>
           <h3 class="mt-1 text-lg font-semibold">Lead SDET</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Playroll (part of VAT IT Group)</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>First QA hire; established the quality practice across the company and product.</li>
             <li>Built a web automation framework from scratch in TypeScript with Playwright and wired it into the GitHub Actions CI/CD pipeline, speeding up release times by 900%.</li>
             <li>Ran and triaged nightly Playwright suites, and managed a small team working directly with the CTO and Head of Engineering.</li>
           </ul>
+          <details class="mt-4 max-w-2xl">
+            <summary class="cursor-pointer font-mono text-xs text-accent hover:underline dark:text-accent-bright">case study / QA from zero</summary>
+            <p class="mt-3 border-l-2 border-line pl-4 text-sm leading-relaxed text-ink-muted dark:border-line-dark dark:text-fog-muted">
+              Playroll had no QA function when I joined as its first hire. I built
+              the quality practice and a TypeScript/Playwright framework from
+              scratch, wired it into GitHub Actions so every change ran the suite,
+              and kept nightly runs healthy as the product grew. Releases sped up
+              by 900%, and I went on to manage a small team, working directly with
+              the CTO and Head of Engineering.
+            </p>
+          </details>
         </article>
 
         <article>
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">May 2022 to Aug 2022</p>
           <h3 class="mt-1 text-lg font-semibold">SDET</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Crypto.com</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Planned and led testing and live proving of Apple Pay and Google Pay, released first to the US and then worldwide to over 50 million users.</li>
             <li>Helped plan shift-left initiatives to improve QA impact across the development lifecycle.</li>
           </ul>
@@ -256,7 +322,7 @@
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Dec 2018 to Apr 2022</p>
           <h3 class="mt-1 text-lg font-semibold">QA Engineer (promoted from Junior QA Engineer)</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Moneybox</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Contributed to the Java/Appium/Cucumber automation suite for over two years: new feature coverage, test maintenance and pull request reviews.</li>
             <li>Planned and led end-to-end testing and live proving of major features, including six new funds that took customer deposits past £2.4m.</li>
             <li>Interviewed almost 200 candidates as the QA team grew from one (me) to almost thirty.</li>
@@ -268,7 +334,7 @@
           <p class="font-mono text-xs text-ink-muted dark:text-fog-muted">Oct 2017 to Nov 2018</p>
           <h3 class="mt-1 text-lg font-semibold">Graduate Materials Engineer</h3>
           <p class="font-mono text-sm text-ink-muted dark:text-fog-muted">Wyman Gordon</p>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
+          <ul class="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-ink-muted dark:text-fog-muted">
             <li>Microstructural examination of nickel and titanium alloys for aerospace production; technical lead on projects introducing new parts for customers including Rolls-Royce.</li>
           </ul>
         </article>
@@ -278,8 +344,8 @@
 
     <!-- Certifications (rendered from the array in js/main.js) -->
     <section id="certifications" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">04</span>
-      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>04 / certifications</p>
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">05</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>05 / certifications</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight">Certifications</h2>
       <div id="certs-root" class="mt-8 space-y-10"></div>
       <noscript>
@@ -295,10 +361,10 @@
 
     <!-- Contact -->
     <section id="contact" class="relative border-t border-line dark:border-line-dark py-16 sm:py-20">
-      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">05</span>
-      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>05 / contact</p>
+      <span class="pointer-events-none select-none absolute right-0 top-10 hidden font-mono font-bold text-line dark:text-line-dark sm:block sm:text-8xl" aria-hidden="true">06</span>
+      <p class="font-mono text-sm text-accent dark:text-accent-bright"><span class="js-check opacity-0 transition-opacity duration-500" aria-hidden="true">&#10003; </span>06 / contact</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight">Get in touch</h2>
-      <p class="mt-6 max-w-xl leading-relaxed text-ink-muted dark:text-fog-muted">
+      <p class="mt-6 max-w-2xl leading-relaxed text-ink-muted dark:text-fog-muted">
         Based in London. If you're hiring for quality engineering in fintech or digital
         assets, or want to talk testing and AI tooling, email is the fastest way to
         reach me. GitHub and LinkedIn are linked at the top of the page.
@@ -318,12 +384,13 @@
   </main>
 
   <footer class="border-t border-line dark:border-line-dark">
-    <div class="mx-auto flex max-w-3xl flex-col gap-2 px-5 py-6 font-mono text-xs text-ink-muted dark:text-fog-muted sm:flex-row sm:items-center sm:justify-between">
+    <div class="mx-auto flex max-w-4xl flex-col gap-2 px-5 py-6 font-mono text-xs text-ink-muted dark:text-fog-muted sm:flex-row sm:items-center sm:justify-between">
       <p>© <span id="year">2026</span> Qasim Mahmood</p>
       <p>
         Hand-built with HTML and Tailwind, pair-programmed with Claude Code,
-        deployed on Cloudflare Pages. No framework, no tracking.
+        deployed on Cloudflare Pages. Ships with its own Playwright suite.
         <!-- TODO: point this at the site repo once it exists on GitHub -->
+        <!-- TODO: after launch, add a Lighthouse score line here linked to the live PageSpeed report -->
         <a href="https://github.com/qasimmahmood95" class="underline decoration-dotted underline-offset-4 hover:text-accent dark:hover:text-accent-bright">View source</a>
       </p>
     </div>

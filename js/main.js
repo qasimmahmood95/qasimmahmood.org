@@ -209,6 +209,7 @@ function initCommandPalette() {
   };
   const commands = [
     { label: "go / about", run: go("about") },
+    { label: "go / approach", run: go("approach") },
     { label: "go / skills", run: go("skills") },
     { label: "go / experience", run: go("experience") },
     { label: "go / certifications", run: go("certifications") },
@@ -302,7 +303,7 @@ function consoleGreeting() {
   const mono = "font-family: ui-monospace, monospace;";
   console.log("%cqasimmahmood.org", mono + "font-weight: 600;");
   console.log("%cOpening the console on a personal site? Spoken like a tester.", mono);
-  console.log("%cSuite is green: 5 sections passed, 0 failed, 0 flaky. Found a bug anyway? " + EMAIL, mono);
+  console.log("%cSuite is green: 6 sections passed, 0 failed, 0 flaky. Found a bug anyway? " + EMAIL, mono);
   console.log("%cTip: ctrl+k works here.", mono);
 }
 
