@@ -1,13 +1,13 @@
 // ---------------------------------------------------------------------------
-// Certifications — add a cert by adding one line to the relevant group.
+// Certifications: add a cert by adding one line to the relevant group.
 // ---------------------------------------------------------------------------
 const CERTIFICATIONS = [
   {
     group: "Cloud",
     items: [
-      { name: "AWS Certified Solutions Architect — Associate", issuer: "Amazon Web Services" },
+      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services" },
       { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services" },
-      { name: "AWS Certified Machine Learning Engineer — Associate", issuer: "Amazon Web Services" },
+      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services" },
       { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft" },
       { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft" },
       { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft" },
@@ -17,9 +17,9 @@ const CERTIFICATIONS = [
   {
     group: "Testing",
     items: [
-      { name: "ISTQB Certified Tester — Foundation Level", issuer: "ISTQB" },
-      { name: "ISTQB Foundation Level — Agile Tester", issuer: "ISTQB" },
-      { name: "ISTQB Advanced Level — Test Analyst", issuer: "ISTQB" },
+      { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB" },
+      { name: "ISTQB Foundation Level Agile Tester", issuer: "ISTQB" },
+      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB" },
     ],
   },
   {
@@ -73,7 +73,7 @@ function renderCertifications() {
 }
 
 // ---------------------------------------------------------------------------
-// Theme toggle — initial state is set by the inline script in <head>.
+// Theme toggle. Initial state is set by the inline script in <head>.
 // ---------------------------------------------------------------------------
 function initThemeToggle() {
   const btn = document.getElementById("theme-toggle");
@@ -106,7 +106,7 @@ function initMobileNav() {
 }
 
 // ---------------------------------------------------------------------------
-// Email — assembled at runtime so the address isn't in the static HTML.
+// Email is assembled at runtime so the address isn't in the static HTML.
 // ---------------------------------------------------------------------------
 function initEmailLink() {
   const link = document.getElementById("email-link");
