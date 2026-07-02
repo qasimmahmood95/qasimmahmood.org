@@ -1,5 +1,6 @@
 node_modules/
 dist/
 
-# Local working notes, not part of the published site
+# Local working notes and editor/tooling config, not part of the published site
 BRIEF.md
+.claude/
