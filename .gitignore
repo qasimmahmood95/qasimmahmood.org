@@ -1,5 +1,7 @@
 node_modules/
 dist/
+test-results/
+playwright-report/
 
 # Local working notes and editor/tooling config, not part of the published site
 BRIEF.md

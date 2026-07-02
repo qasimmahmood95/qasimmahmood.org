@@ -1,5 +1,8 @@
 # qasimmahmood.org
 
+<!-- TODO: confirm badge URL once the repo is pushed (assumes repo name q-website) -->
+![CI](https://github.com/qasimmahmood95/q-website/actions/workflows/ci.yml/badge.svg)
+
 Single-page personal site for Qasim Mahmood, Senior SDET in regulated fintech and digital assets.
 
 Plain HTML + Tailwind CSS v4, vanilla JS. No framework, no CMS, no tracking.
@@ -15,6 +18,7 @@ js/main.js      dark-mode toggle, mobile nav, certifications data, email links,
                 scroll effects (progress bar, scrollspy, section reveals),
                 command palette (ctrl/cmd+k)
 assets/         og.png social card, public CV PDF (phone number removed)
+tests/          Playwright suite covering the site's behaviour
 ```
 
 To **add a certification**, add one line to the `CERTIFICATIONS` array in
@@ -43,8 +47,22 @@ the HTML.
 4. Deploy. Every push to `main` triggers a new deployment; PRs get preview URLs automatically.
 5. Custom domain: **Pages project > Custom domains > Set up a custom domain**, then enter `qasimmahmood.org`. If the domain's DNS is already on Cloudflare this is a one-click CNAME; otherwise move the nameservers first.
 
+## Tests
+
+The site ships with its own Playwright suite (yes, really):
+
+```sh
+npx playwright install chromium   # first run only
+npm test
+```
+
+It covers section structure, certification rendering, email obfuscation,
+theme persistence, the command palette, scroll effects, the mobile nav,
+and the 404 page. The config starts its own static server, or reuses one
+already running on port 8123.
+
 ## CI
 
 [.github/workflows/ci.yml](.github/workflows/ci.yml) runs on every push and PR:
-CSS build, HTML validation (`html-validate`), and a link check (`lychee`,
-LinkedIn excluded because it blocks bots).
+CSS build, HTML validation (`html-validate`), a link check (`lychee`,
+LinkedIn excluded because it blocks bots), and the Playwright suite.

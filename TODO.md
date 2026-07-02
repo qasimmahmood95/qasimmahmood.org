@@ -27,6 +27,15 @@ are reviews and launch steps rather than gaps.
       phone number removed. Regenerate it whenever the CV changes.
 - [ ] **OG image**: `assets/og.png` is generated (1200x630). After deploying, paste the
       site URL into LinkedIn's Post Inspector to confirm the card renders.
+- [ ] **Testimonials**: gather two or three one-line quotes from LinkedIn
+      recommendations or colleagues; a quotes block can then slot in near the
+      experience section.
+- [ ] **Case studies**: the two expandables (Zodia headless handshake, Playroll QA
+      from zero) are drafted from CV facts; review the narratives.
+- [ ] **Lighthouse line**: after launch, run PageSpeed on the live site and add the
+      score to the footer colophon (TODO comment marks the spot).
+- [ ] **README badge**: assumes the repo will be `qasimmahmood95/q-website`; fix the
+      URL if the repo gets a different name.
 
 ## Before/at launch
 

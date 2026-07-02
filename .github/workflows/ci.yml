@@ -31,3 +31,9 @@ jobs:
           # LinkedIn returns 999 to bots, so it can't be checked automatically.
           args: --no-progress --exclude 'linkedin\.com' index.html 404.html
           fail: true
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright suite
+        run: npm test

@@ -4,9 +4,11 @@
   "description": "Personal site for Qasim Mahmood, Senior SDET in regulated fintech and digital assets.",
   "scripts": {
     "build": "tailwindcss -i src/input.css -o css/site.css --minify",
-    "watch": "tailwindcss -i src/input.css -o css/site.css --watch"
+    "watch": "tailwindcss -i src/input.css -o css/site.css --watch",
+    "test": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.0",
     "@tailwindcss/cli": "^4.1.0",
     "tailwindcss": "^4.1.0"
   }
