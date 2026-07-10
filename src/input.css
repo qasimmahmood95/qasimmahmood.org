@@ -47,14 +47,57 @@ button {
     background-color 0.15s ease, opacity 0.15s ease;
 }
 
-/* Faint dot grid behind the hero, fading out towards the bottom */
-#top {
-  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
-  background-size: 22px 22px;
+/* Topographic background: two contour layers masked by pre-generated SVG
+   tiles (regenerate with `node scripts/generate-topo.mjs`), drifting slowly
+   in opposite directions. Decorative only; sits behind all content. */
+.topo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.topo-fixed {
+  position: fixed;
+}
+.topo-layer {
+  position: absolute;
+  inset: -14%;
+  background-color: var(--color-line);
+  -webkit-mask-image: url(../assets/topo-a.svg);
+  mask-image: url(../assets/topo-a.svg);
+  -webkit-mask-size: 620px;
+  mask-size: 620px;
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+  animation: topo-drift 80s ease-in-out infinite alternate;
+}
+.topo-layer.topo-b {
+  -webkit-mask-image: url(../assets/topo-b.svg);
+  mask-image: url(../assets/topo-b.svg);
+  -webkit-mask-size: 1000px;
+  mask-size: 1000px;
+  opacity: 0.7;
+  animation-duration: 130s;
+  animation-direction: alternate-reverse;
+}
+.dark .topo-layer {
+  background-color: var(--color-line-dark);
+}
+
+/* On the hero, fade the contours out towards the content below */
+#top .topo {
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
   mask-image: linear-gradient(to bottom, black 55%, transparent);
 }
-.dark #top {
-  background-image: radial-gradient(var(--color-line-dark) 1px, transparent 1px);
+
+@keyframes topo-drift {
+  from {
+    transform: translate3d(-2.5%, -1.5%, 0) rotate(-0.5deg);
+  }
+  to {
+    transform: translate3d(2.5%, 2%, 0) rotate(0.5deg);
+  }
 }
 
 /* Timeline nodes: a dot centred on the experience border at each entry */
@@ -117,6 +160,9 @@ button {
   button {
     transition: none;
   }
+  .topo-layer {
+    animation: none;
+  }
 }
 
 /* Print: a clean black-on-white summary, regardless of theme */
@@ -136,16 +182,13 @@ button {
   noscript,
   .js-check,
   .js-email,
+  .topo,
   main section > span[aria-hidden] {
     display: none !important;
   }
   .reveal {
     opacity: 1 !important;
     translate: 0 0 !important;
-  }
-  #top {
-    background-image: none;
-    mask-image: none;
   }
   #experience article,
   #certs-root li {

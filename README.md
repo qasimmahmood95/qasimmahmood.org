@@ -18,9 +18,15 @@ css/site.css    compiled CSS (committed, rebuilt on deploy)
 js/main.js      dark-mode toggle, mobile nav, certifications data, email links,
                 scroll effects (progress bar, scrollspy, section reveals),
                 command palette (ctrl/cmd+k)
-assets/         og.png social card, public CV PDF (phone number removed)
+assets/         og.png social card, public CV PDF (phone number removed),
+                topo-*.svg contour tiles for the animated background
+scripts/        generate-topo.mjs regenerates the contour tiles (plain Node)
 tests/          Playwright suite covering the site's behaviour
 ```
+
+The animated topographic background is pure CSS: two layers masked by the
+pre-generated contour SVGs drift at different speeds, and freeze under
+`prefers-reduced-motion`. Regenerate the tiles with `node scripts/generate-topo.mjs`.
 
 To **add a certification**, add one line to the `CERTIFICATIONS` array in
 [js/main.js](js/main.js). No rebuild needed.
