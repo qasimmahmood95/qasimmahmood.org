@@ -1,6 +1,5 @@
 # qasimmahmood.org
 
-<!-- TODO: confirm badge URL once the repo is pushed (assumes repo name q-website) -->
 ![CI](https://github.com/qasimmahmood95/q-website/actions/workflows/ci.yml/badge.svg)
 
 Single-page personal site for Qasim Mahmood, Senior SDET in regulated fintech and digital assets.

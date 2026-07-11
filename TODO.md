@@ -21,7 +21,7 @@ are reviews and launch steps rather than gaps.
       Claude Code Essentials from the CV. Check the full list is current.
 - [ ] **Favicon**: currently a minimal teal "Q" monogram (inline SVG). Replace if wanted.
 - [ ] **"Now" strip**: two items are real; add or update (cert in progress, reading, talks).
-- [ ] **Footer "View source" link**: points at the GitHub profile; update to the repo URL once pushed.
+- [x] **Footer "View source" link**: points at the repo.
 
 - [ ] **CV PDF**: `assets/Qasim_Mahmood_CV.pdf` is generated from the CV docx with the
       phone number removed. Regenerate it whenever the CV changes.
@@ -34,12 +34,11 @@ are reviews and launch steps rather than gaps.
       from zero) are drafted from CV facts; review the narratives.
 - [ ] **Lighthouse line**: after launch, run PageSpeed on the live site and add the
       score to the footer colophon (TODO comment marks the spot).
-- [ ] **README badge**: assumes the repo will be `qasimmahmood95/q-website`; fix the
-      URL if the repo gets a different name.
+- [x] **README badge**: points at `qasimmahmood95/q-website`.
 
 ## Before/at launch
 
-- [ ] Create the GitHub repo under `qasimmahmood95` and push (`git remote add origin ... && git push -u origin main`).
+- [x] Create the GitHub repo under `qasimmahmood95` and push.
 - [ ] Set up Cloudflare Pages and the custom domain (steps in README).
 - [ ] Run Lighthouse against the deployed site (local static-server numbers aren't representative).
 - [ ] `BRIEF.md` is gitignored as a working note. Delete or un-ignore as preferred.
