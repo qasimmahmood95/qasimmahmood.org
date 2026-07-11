@@ -24,13 +24,15 @@ scripts/        generate-topo.mjs regenerates the contour tiles (plain Node)
 tests/          Playwright suite covering the site's behaviour
 ```
 
-The animated topographic background is CSS-driven: three layers masked by
-pre-generated contour SVGs drift at different speeds. The accent layer is a
-set of "index contours" from the same field as the main layer (identical
-animation, so the lines coincide) with elevation labels cut into the lines.
-On the main page's hero the whole field also parallaxes gently with scroll
-(a few lines of JS). Everything freezes under `prefers-reduced-motion`.
-Regenerate the tiles with `node scripts/generate-topo.mjs`.
+The animated topographic background is CSS-driven: three fixed page-wide
+layers masked by pre-generated contour SVGs drift at different speeds, at
+full strength in the page margins and dimmed behind the content column.
+The accent layer is a set of "index contours" from the same field as the
+main layer (identical animation, so the lines coincide) with elevation
+labels cut into the lines. On the main page the layers also parallax with
+scroll at two depths by shifting their mask positions (a few lines of JS).
+Everything freezes under `prefers-reduced-motion`. Regenerate the tiles
+with `node scripts/generate-topo.mjs`.
 
 To **add a certification**, add one line to the `CERTIFICATIONS` array in
 [js/main.js](js/main.js). No rebuild needed.

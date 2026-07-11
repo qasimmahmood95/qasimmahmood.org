@@ -36,21 +36,37 @@ test.describe("topographic background", () => {
     }
   });
 
-  test("hero contours parallax with scroll", async ({ page }) => {
+  test("contour layers parallax with scroll at layered speeds", async ({ page }) => {
     await page.goto("/");
-    const topo = page.locator("#top .topo");
     await page.evaluate(() => window.scrollTo(0, 400));
-    await expect
-      .poll(async () => topo.evaluate((el) => getComputedStyle(el).transform))
-      .toMatch(/matrix\(1, 0, 0, 1, 0, 7[0-9](\.\d+)?\)/); // 400 * 0.18 = 72
+
+    const layerA = page.locator(".topo-fixed .topo-layer").first();
+    const layerB = page.locator(".topo-fixed .topo-layer.topo-b");
+    const accent = page.locator(".topo-fixed .topo-layer.topo-accent");
+
+    await expect.poll(() => layerA.evaluate((el) => el.style.maskPosition)).toBe("0px -40px"); // 400 * 0.10
+    await expect.poll(() => layerB.evaluate((el) => el.style.maskPosition)).toBe("0px -64px"); // 400 * 0.16
+    // Accent must track layer A exactly, or the highlighted lines detach.
+    expect(await accent.evaluate((el) => el.style.maskPosition)).toBe("0px -40px");
   });
 
   test("parallax is disabled under reduced motion", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    const topo = page.locator("#top .topo");
     await page.evaluate(() => window.scrollTo(0, 400));
     await page.waitForTimeout(200);
-    expect(await topo.evaluate((el) => getComputedStyle(el).transform)).toBe("none");
+    const layerA = page.locator(".topo-fixed .topo-layer").first();
+    expect(await layerA.evaluate((el) => el.style.maskPosition)).toBe("");
+  });
+
+  test("section reveal replays when a section re-enters the viewport", async ({ page }) => {
+    await page.goto("/");
+    const skills = page.locator("#skills");
+    await skills.scrollIntoViewIfNeeded();
+    await expect(skills).toHaveClass(/revealed/);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await expect(skills).not.toHaveClass(/revealed/);
+    await skills.scrollIntoViewIfNeeded();
+    await expect(skills).toHaveClass(/revealed/);
   });
 });

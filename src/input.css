@@ -56,12 +56,13 @@ button {
   z-index: -1;
   pointer-events: none;
 }
-/* The hero's parent section clips; the fixed variant clips itself.
-   Keeping overflow off the base lets JS parallax the hero container
-   without dragging its own clip box along. */
+/* Fixed page-wide field: full strength in the margins, dimmed behind the
+   content column so text stays comfortable to read. */
 .topo-fixed {
   position: fixed;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.3) 28%, rgba(0, 0, 0, 0.3) 72%, black);
+  mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.3) 28%, rgba(0, 0, 0, 0.3) 72%, black);
 }
 .topo-layer {
   position: absolute;
@@ -73,7 +74,7 @@ button {
   mask-size: 620px;
   -webkit-mask-repeat: repeat;
   mask-repeat: repeat;
-  animation: topo-drift 80s ease-in-out infinite alternate;
+  animation: topo-drift 45s ease-in-out infinite alternate;
 }
 .topo-layer.topo-b {
   -webkit-mask-image: url(../assets/topo-b.svg);
@@ -81,7 +82,7 @@ button {
   -webkit-mask-size: 1000px;
   mask-size: 1000px;
   opacity: 0.7;
-  animation-duration: 130s;
+  animation-duration: 70s;
   animation-direction: alternate-reverse;
 }
 /* Index contours: same field and animation as layer A, so the accent
@@ -100,18 +101,12 @@ button {
   opacity: 0.3;
 }
 
-/* On the hero, fade the contours out towards the content below */
-#top .topo {
-  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
-  mask-image: linear-gradient(to bottom, black 55%, transparent);
-}
-
 @keyframes topo-drift {
   from {
-    transform: translate3d(-2.5%, -1.5%, 0) rotate(-0.5deg);
+    transform: translate3d(-3.5%, -2%, 0) rotate(-0.6deg);
   }
   to {
-    transform: translate3d(2.5%, 2%, 0) rotate(0.5deg);
+    transform: translate3d(3.5%, 2.5%, 0) rotate(0.6deg);
   }
 }
 
@@ -150,11 +145,13 @@ button {
 }
 
 /* Entrance animation: .reveal is only added by JS when motion is allowed,
-   so content stays visible without JS and for reduced-motion users */
+   so content stays visible without JS and for reduced-motion users.
+   The class toggles off when a section leaves the viewport, so sections
+   animate in again on every approach. */
 .reveal {
   opacity: 0;
-  translate: 0 12px;
-  transition: opacity 0.6s ease, translate 0.6s ease;
+  translate: 0 28px;
+  transition: opacity 0.65s ease, translate 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.revealed {
   opacity: 1;

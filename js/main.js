@@ -55,7 +55,7 @@ function renderCertifications() {
     section.appendChild(heading);
 
     const grid = document.createElement("ul");
-    grid.className = "mt-3 grid gap-3 sm:grid-cols-2";
+    grid.className = "mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3";
     for (const { name, issuer } of items) {
       const li = document.createElement("li");
       li.className = "border border-line dark:border-line-dark px-4 py-3";
@@ -148,18 +148,25 @@ function initScrollEffects() {
   const sections = Array.from(document.querySelectorAll("main section[id]"));
 
   const bar = document.getElementById("progress");
-  // Hero contours scroll at a fraction of content speed. The CSS drift
-  // animation lives on the child layers, so this transform doesn't fight it.
-  const heroTopo = document.querySelector("#top .topo");
-  if (bar || heroTopo) {
+  // The contour layers parallax by shifting their mask position with scroll,
+  // which composes with (rather than fights) the CSS drift transform. The
+  // masks tile, so any offset is safe. Layer A and the accent layer share a
+  // factor so the highlighted lines stay on their grey counterparts.
+  const topoLayers = Array.from(document.querySelectorAll(".topo-fixed .topo-layer"))
+    .map((el) => [el, el.classList.contains("topo-b") ? 0.16 : 0.1]);
+  if (bar || topoLayers.length) {
     let ticking = false;
     const update = () => {
       if (bar) {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
       }
-      if (heroTopo && !reduceMotion && window.scrollY < window.innerHeight * 2) {
-        heroTopo.style.transform = "translate3d(0, " + window.scrollY * 0.18 + "px, 0)";
+      if (!reduceMotion) {
+        for (const [el, factor] of topoLayers) {
+          const pos = "0px " + Math.round(-window.scrollY * factor) + "px";
+          el.style.maskPosition = pos;
+          el.style.webkitMaskPosition = pos;
+        }
       }
       ticking = false;
     };
@@ -185,14 +192,18 @@ function initScrollEffects() {
   }, { rootMargin: "-45% 0px -50% 0px" });
   sections.forEach((s) => spy.observe(s));
 
-  // Sections "pass" as they come into view: check mark appears, content fades up
+  // Sections "pass" as they come into view: check mark appears (and stays),
+  // content fades up. The reveal resets when a section leaves the viewport,
+  // so it plays again on every approach.
   const seen = new IntersectionObserver((entries) => {
     for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const check = entry.target.querySelector(".js-check");
-      if (check) check.classList.remove("opacity-0");
-      entry.target.classList.add("revealed");
-      seen.unobserve(entry.target);
+      if (entry.isIntersecting) {
+        const check = entry.target.querySelector(".js-check");
+        if (check) check.classList.remove("opacity-0");
+        entry.target.classList.add("revealed");
+      } else {
+        entry.target.classList.remove("revealed");
+      }
     }
   }, { rootMargin: "0px 0px -80px 0px" });
   sections.forEach((s) => {
