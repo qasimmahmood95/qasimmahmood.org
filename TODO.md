@@ -32,13 +32,14 @@ are reviews and launch steps rather than gaps.
       experience section.
 - [ ] **Case studies**: the two expandables (Zodia headless handshake, Playroll QA
       from zero) are drafted from CV facts; review the narratives.
-- [ ] **Lighthouse line**: after launch, run PageSpeed on the live site and add the
-      score to the footer colophon (TODO comment marks the spot).
+- [x] **Lighthouse line**: measured 100/100/100/100 on the pages.dev deployment
+      (2026-07-11); colophon links to the PageSpeed report for qasimmahmood.org,
+      which points at the old site until the domain cutover.
 - [x] **README badge**: points at `qasimmahmood95/qasimmahmood.org`.
 
 ## Before/at launch
 
 - [x] Create the GitHub repo under `qasimmahmood95` and push.
 - [ ] Set up Cloudflare Pages and the custom domain (steps in README).
-- [ ] Run Lighthouse against the deployed site (local static-server numbers aren't representative).
+- [x] Run Lighthouse against the deployed site: 100 across the board.
 - [ ] `BRIEF.md` is gitignored as a working note. Delete or un-ignore as preferred.

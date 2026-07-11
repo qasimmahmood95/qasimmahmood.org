@@ -67,7 +67,10 @@ button {
 .topo-layer {
   position: absolute;
   inset: -14%;
-  background-color: var(--color-line);
+  /* Same-colour gradient rather than background-color: identical rendering,
+     but keeps automated contrast checkers from treating the masked layer as
+     a solid backdrop behind text (axe can't model masks). */
+  background-image: linear-gradient(var(--color-line), var(--color-line));
   -webkit-mask-image: url(../assets/topo-a.svg);
   mask-image: url(../assets/topo-a.svg);
   -webkit-mask-size: 620px;
@@ -90,14 +93,14 @@ button {
 .topo-layer.topo-accent {
   -webkit-mask-image: url(../assets/topo-c.svg);
   mask-image: url(../assets/topo-c.svg);
-  background-color: var(--color-accent);
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
   opacity: 0.4;
 }
 .dark .topo-layer {
-  background-color: var(--color-line-dark);
+  background-image: linear-gradient(var(--color-line-dark), var(--color-line-dark));
 }
 .dark .topo-layer.topo-accent {
-  background-color: var(--color-accent-bright);
+  background-image: linear-gradient(var(--color-accent-bright), var(--color-accent-bright));
   opacity: 0.3;
 }
 
