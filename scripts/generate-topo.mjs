@@ -3,8 +3,16 @@
 //
 //   node scripts/generate-topo.mjs
 //
-// Writes assets/topo-a.svg and assets/topo-b.svg. The noise field is
-// periodic, so the SVGs tile seamlessly with mask-repeat.
+// Writes:
+//   assets/topo-a.svg  main contour field
+//   assets/topo-b.svg  second field, displayed larger for parallax depth
+//   assets/topo-c.svg  "index contours": two levels of field A with
+//                      elevation labels, shown in the accent colour and
+//                      animated in lockstep with A so the lines coincide
+//
+// The noise field is periodic, so the SVGs tile seamlessly with
+// mask-repeat. Level selection is fully deterministic per seed, which is
+// what keeps topo-c aligned with topo-a.
 
 import { writeFileSync } from "node:fs";
 
@@ -144,36 +152,104 @@ function smooth(line) {
   return { points: out.filter((_, i) => i % 2 === 0 || i === out.length - 1), closed };
 }
 
-function toPath(lines) {
-  let d = "";
-  for (const line of lines) {
-    if (line.points.length < (line.closed ? 8 : 4)) continue; // drop specks
-    d += `M${line.points.map((p) => `${Math.round(p[0])} ${Math.round(p[1])}`).join("L")}`;
-    if (line.closed) d += "Z";
-  }
+function pathFor(points, closed) {
+  if (points.length < 2) return "";
+  let d = `M${points.map((p) => `${Math.round(p[0])} ${Math.round(p[1])}`).join("L")}`;
+  if (closed) d += "Z";
   return d;
 }
 
-function generate(seed, levels) {
+// Deterministic quantile levels for a seed, so different layers built from
+// the same seed pick numerically identical iso levels.
+function levelsFor(seed, count) {
   const field = makeField(seed);
-  const n = SIZE / CELL;
-  // Pick levels from the field's actual distribution so density is even.
+  const rand = mulberry32(seed ^ 0x5eed);
   const samples = [];
-  for (let i = 0; i < 4000; i++) samples.push(field(Math.random() * SIZE, Math.random() * SIZE));
+  for (let i = 0; i < 4000; i++) samples.push(field(rand() * SIZE, rand() * SIZE));
   samples.sort((a, b) => a - b);
-  const quantile = (q) => samples[Math.floor(q * samples.length)];
-
-  const lines = [];
-  for (let l = 0; l < levels; l++) {
-    const level = quantile(0.2 + (0.65 * l) / (levels - 1));
-    for (const line of joinSegments(marchingSquares(field, level, n))) {
-      lines.push(smooth(line));
-    }
-  }
-  const d = toPath(lines);
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SIZE} ${SIZE}"><path d="${d}" fill="none" stroke="#000" stroke-width="1.1"/></svg>\n`;
+  return Array.from({ length: count }, (_, l) =>
+    samples[Math.floor((0.2 + (0.65 * l) / (count - 1)) * samples.length)]);
 }
 
-writeFileSync("assets/topo-a.svg", generate(1337, 6));
-writeFileSync("assets/topo-b.svg", generate(9021, 4));
-console.log("wrote assets/topo-a.svg and assets/topo-b.svg");
+// Build smoothed contour lines for the given iso levels of a seed's field.
+function contours(seed, levels) {
+  const field = makeField(seed);
+  const n = SIZE / CELL;
+  const lines = [];
+  levels.forEach((level, levelIndex) => {
+    for (const raw of joinSegments(marchingSquares(field, level, n))) {
+      const s = smooth(raw);
+      if (s.points.length >= (s.closed ? 8 : 4)) lines.push({ ...s, levelIndex });
+    }
+  });
+  return lines;
+}
+
+function svg(body, strokeWidth) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SIZE} ${SIZE}">` +
+    `<g fill="none" stroke="#000" stroke-width="${strokeWidth}">${body}</g></svg>\n`;
+}
+
+function plainLayer(seed, levelCount, strokeWidth) {
+  const body = contours(seed, levelsFor(seed, levelCount))
+    .map((l) => `<path d="${pathFor(l.points, l.closed)}"/>`).join("");
+  return svg(body, strokeWidth);
+}
+
+// Index-contour layer: a subset of field A's levels, bolder, with the line
+// broken where an elevation label sits (proper cartographic style).
+function indexLayer(seed, totalLevels, pickedIndices, elevations) {
+  const all = levelsFor(seed, totalLevels);
+  const picked = pickedIndices.map((i) => all[i]);
+  const lines = contours(seed, picked);
+
+  let paths = "";
+  let labels = "";
+  const labelled = new Set();
+  // Label the two longest lines of each level.
+  lines.sort((a, b) => b.points.length - a.points.length);
+  const perLevel = new Map();
+
+  for (const line of lines) {
+    const count = perLevel.get(line.levelIndex) || 0;
+    if (count < 2 && line.points.length > 24) {
+      perLevel.set(line.levelIndex, count + 1);
+      const pts = line.points;
+      // Cut a gap around 40% of the way along; keep labels off tile edges
+      // so they never straddle the seam.
+      let cut = Math.floor(pts.length * 0.4);
+      const margin = 40;
+      for (let tries = 0; tries < pts.length; tries++) {
+        const c = pts[(cut + tries) % (pts.length - 4)];
+        if (c[0] > margin && c[0] < SIZE - margin && c[1] > margin && c[1] < SIZE - margin) {
+          cut = (cut + tries) % (pts.length - 4);
+          break;
+        }
+      }
+      const gap = 4;
+      const a = pts.slice(0, cut);
+      const b = pts.slice(cut + gap);
+      const p1 = pts[cut];
+      const p2 = pts[Math.min(cut + gap, pts.length - 1)];
+      const cx = (p1[0] + p2[0]) / 2;
+      const cy = (p1[1] + p2[1]) / 2;
+      let deg = (Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180) / Math.PI;
+      if (deg > 90) deg -= 180;
+      if (deg < -90) deg += 180;
+      paths += `<path d="${pathFor(a, false)}"/><path d="${pathFor(b, false)}"/>`;
+      labels += `<text transform="translate(${Math.round(cx)} ${Math.round(cy)}) rotate(${Math.round(deg)})" dy="3.5">${elevations[line.levelIndex]}</text>`;
+      labelled.add(line);
+    }
+  }
+  for (const line of lines) {
+    if (!labelled.has(line)) paths += `<path d="${pathFor(line.points, line.closed)}"/>`;
+  }
+
+  const text = `<g font-family="ui-monospace, Consolas, Menlo, monospace" font-size="10" fill="#000" stroke="none" text-anchor="middle">${labels}</g>`;
+  return svg(paths + text, 1.4);
+}
+
+writeFileSync("assets/topo-a.svg", plainLayer(1337, 6, 1.1));
+writeFileSync("assets/topo-b.svg", plainLayer(9021, 4, 1.1));
+writeFileSync("assets/topo-c.svg", indexLayer(1337, 6, [1, 4], { 0: "160", 1: "340" }));
+console.log("wrote assets/topo-a.svg, topo-b.svg and topo-c.svg");

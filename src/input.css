@@ -54,11 +54,14 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
   pointer-events: none;
 }
+/* The hero's parent section clips; the fixed variant clips itself.
+   Keeping overflow off the base lets JS parallax the hero container
+   without dragging its own clip box along. */
 .topo-fixed {
   position: fixed;
+  overflow: hidden;
 }
 .topo-layer {
   position: absolute;
@@ -81,8 +84,20 @@ button {
   animation-duration: 130s;
   animation-direction: alternate-reverse;
 }
+/* Index contours: same field and animation as layer A, so the accent
+   lines sit exactly on their grey counterparts. */
+.topo-layer.topo-accent {
+  -webkit-mask-image: url(../assets/topo-c.svg);
+  mask-image: url(../assets/topo-c.svg);
+  background-color: var(--color-accent);
+  opacity: 0.4;
+}
 .dark .topo-layer {
   background-color: var(--color-line-dark);
+}
+.dark .topo-layer.topo-accent {
+  background-color: var(--color-accent-bright);
+  opacity: 0.3;
 }
 
 /* On the hero, fade the contours out towards the content below */

@@ -148,11 +148,19 @@ function initScrollEffects() {
   const sections = Array.from(document.querySelectorAll("main section[id]"));
 
   const bar = document.getElementById("progress");
-  if (bar) {
+  // Hero contours scroll at a fraction of content speed. The CSS drift
+  // animation lives on the child layers, so this transform doesn't fight it.
+  const heroTopo = document.querySelector("#top .topo");
+  if (bar || heroTopo) {
     let ticking = false;
     const update = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      }
+      if (heroTopo && !reduceMotion && window.scrollY < window.innerHeight * 2) {
+        heroTopo.style.transform = "translate3d(0, " + window.scrollY * 0.18 + "px, 0)";
+      }
       ticking = false;
     };
     window.addEventListener("scroll", () => {
