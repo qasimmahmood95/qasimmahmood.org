@@ -10,11 +10,11 @@ const CERTIFICATIONS = [
   {
     group: "Cloud",
     items: [
-      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft", issued: "Mar 2025", id: "8F3AE15DB1DC7FD" },
-      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", issued: "Dec 2024" },
-      { name: "Cloud Digital Leader", issuer: "Google Cloud", issued: "Dec 2024" },
-      { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft", issued: "Nov 2024", id: "FA52407D66AFD830" },
-      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024" },
+      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft", issued: "Mar 2025", id: "8F3AE15DB1DC7FD", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/8F3AE15DB1DC7FD?sharingId" },
+      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", issued: "Dec 2024", url: "https://www.credly.com/badges/82b119a1-ddf4-46ad-aba1-bc160d516c86" },
+      { name: "Cloud Digital Leader", issuer: "Google Cloud", issued: "Dec 2024", url: "https://www.credly.com/badges/08ff3b9a-695f-40d2-be71-980dd78bffea" },
+      { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft", issued: "Nov 2024", id: "FA52407D66AFD830", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/FA52407D66AFD830?sharingId=966D4EA02489B5E" },
+      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/1c38a59a-512b-47e7-9b1d-5719b6ef7769" },
       { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services", issued: "Oct 2024" },
       { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", issued: "Jan 2022", id: "I126-0820" },
     ],
@@ -38,10 +38,10 @@ const CERTIFICATIONS = [
   {
     group: "AI",
     items: [
-      { name: "Claude Code Essentials", issuer: "ExamPro", issued: "Apr 2026", id: "JJq1XXOyFjmXhO-EHHRa3g5d3b" },
-      { name: "AI Fluency: Framework & Foundations", issuer: "Anthropic", issued: "Mar 2026", id: "gw79erqmijoa" },
-      { name: "Claude Code in Action", issuer: "Anthropic", issued: "Mar 2026", id: "3fj26my5u2n8" },
-      { name: "Claude 101", issuer: "Anthropic", issued: "Mar 2026", id: "ee9v2q62esni" },
+      { name: "Claude Code Essentials", issuer: "ExamPro", issued: "Apr 2026", id: "JJq1XXOyFjmXhO-EHHRa3g5d3b", url: "https://app.exampro.co/validate/badge/JJq1XXOyFjmXhO-EHHRa3g5d3b" },
+      { name: "AI Fluency: Framework & Foundations", issuer: "Anthropic", issued: "Mar 2026", id: "gw79erqmijoa", url: "https://verify.skilljar.com/c/gw79erqmijoa" },
+      { name: "Claude Code in Action", issuer: "Anthropic", issued: "Mar 2026", id: "3fj26my5u2n8", url: "https://verify.skilljar.com/c/3fj26my5u2n8" },
+      { name: "Claude 101", issuer: "Anthropic", issued: "Mar 2026", id: "ee9v2q62esni", url: "https://verify.skilljar.com/c/ee9v2q62esni" },
     ],
   },
   {
@@ -80,7 +80,12 @@ function renderCertifications() {
 
       const inner = url ? document.createElement("a") : document.createElement("div");
       inner.className = "block px-4 py-3";
-      if (url) inner.href = url;
+      if (url) {
+        inner.href = url;
+        inner.target = "_blank";
+        inner.rel = "noopener";
+        inner.title = "Verify credential";
+      }
       inner.append(certName, certMeta);
 
       if (id) {
