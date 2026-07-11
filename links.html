@@ -29,7 +29,7 @@
   <div class="mx-auto flex min-h-screen w-full max-w-md flex-col px-5">
 
     <header class="flex items-center justify-between py-4">
-      <a href="/" class="font-mono text-sm font-semibold tracking-tight hover:text-accent dark:hover:text-accent-bright">q.mahmood</a>
+      <a href="/" class="font-mono text-sm font-semibold tracking-tight hover:text-accent dark:hover:text-accent-bright">qasimmahmood.org</a>
       <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
         class="rounded p-2 text-ink-muted hover:text-ink dark:text-fog-muted dark:hover:text-fog">
         <svg class="hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -64,7 +64,7 @@
     </main>
 
     <footer class="py-6 text-center font-mono text-xs text-ink-muted dark:text-fog-muted">
-      <a href="/" class="hover:text-accent dark:hover:text-accent-bright">qasimmahmood.org</a>
+      <p>© <span id="year">2026</span> Qasim Mahmood</p>
     </footer>
 
   </div>
@@ -106,6 +106,8 @@
       var dark = document.documentElement.classList.toggle("dark");
       localStorage.setItem("theme", dark ? "dark" : "light");
     });
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
 </body>
 </html>

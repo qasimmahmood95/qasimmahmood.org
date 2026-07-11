@@ -4,7 +4,7 @@ test.describe("page structure", () => {
   test("loads with the right title and all sections", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Qasim Mahmood/);
-    for (const id of ["about", "approach", "skills", "experience", "certifications", "contact"]) {
+    for (const id of ["about", "approach", "skills", "experience", "testimonials", "certifications", "contact"]) {
       await expect(page.locator(`#${id}`)).toBeAttached();
     }
   });
@@ -25,9 +25,9 @@ test.describe("page structure", () => {
 
   test("renders colleague testimonials with honest attribution", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#experience figure blockquote")).toHaveCount(7);
+    await expect(page.locator("#testimonials figure blockquote")).toHaveCount(7);
     // Attribution separates current title from where the collaboration happened
-    const first = page.locator("#experience figcaption").first();
+    const first = page.locator("#testimonials figcaption").first();
     await expect(first).toContainText("CTO at Lovey");
     await expect(first).toContainText("worked together at Playroll");
   });
