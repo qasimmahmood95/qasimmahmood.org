@@ -28,8 +28,15 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          # LinkedIn returns 999 to bots, so it can't be checked automatically.
-          args: --no-progress --exclude 'linkedin\.com' index.html 404.html links.html
+          # LinkedIn returns 999 to bots. Own-domain URLs (canonical, og:url)
+          # are self-referential and 404 until the new site replaces the old
+          # one at the domain, so they're excluded too.
+          args: >-
+            --no-progress
+            --root-dir ${{ github.workspace }}
+            --exclude 'linkedin\.com'
+            --exclude 'qasimmahmood\.org'
+            index.html 404.html links.html
           fail: true
 
       - name: Install Playwright browser
