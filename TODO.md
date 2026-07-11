@@ -16,9 +16,10 @@ are reviews and launch steps rather than gaps.
 - [ ] **Moneybox "more than 50 releases" bullet**: the new CV dropped it; the site still
       has it. Remove if that was a deliberate cut.
 - [ ] **All copy**: hero line, about narrative and contact blurb are drafts to edit.
-- [ ] **Certifications**: the site lists more than the CV (AI Practitioner, AI-900, SC-900,
-      GCP Digital Leader, ISTQB Agile, GitHub certs, AUSCIF) per the brief, and now also
-      Claude Code Essentials from the CV. Check the full list is current.
+- [x] **Certifications**: synced with the LinkedIn profile (18 certs with issue
+      dates and credential IDs, grouped Cloud / Testing / DevOps / AI / Other;
+      Claude Code Essentials corrected to ExamPro). Early Adopter badge variants
+      and Google Analytics for Beginners left off deliberately.
 - [ ] **Favicon**: currently a minimal teal "Q" monogram (inline SVG). Replace if wanted.
 - [ ] **"Now" strip**: two items are real; add or update (cert in progress, reading, talks).
 - [x] **Footer "View source" link**: points at the repo.
@@ -27,9 +28,18 @@ are reviews and launch steps rather than gaps.
       phone number removed. Regenerate it whenever the CV changes.
 - [ ] **OG image**: `assets/og.png` is generated (1200x630). After deploying, paste the
       site URL into LinkedIn's Post Inspector to confirm the card renders.
-- [ ] **Testimonials**: gather two or three one-line quotes from LinkedIn
-      recommendations or colleagues; a quotes block can then slot in near the
-      experience section.
+- [x] **Testimonials**: three excerpts from LinkedIn recommendations (Mario Husha,
+      Lucie Kovacsova, Rafal Ozog) now sit under the experience timeline. Confirm
+      the picks and the trimming.
+- [ ] **Certification verify links**: cards support a `url` field (they become
+      links when it's set). Grab the public URLs from each "Show credential"
+      button on LinkedIn (Credly for AWS/GitHub, Microsoft share links, ISTQB
+      SCR) and add them to the array in `js/main.js`.
+- [ ] **Metric discrepancies to reconcile**: LinkedIn About says 6 funds + 12 ETFs
+      and deposits over £3.5m, team to "over 20", "over 200" interviews; the
+      LinkedIn Moneybox entry says £2.4m and "over 150"; the CV says £2.4m,
+      almost 200, almost 30. The site currently uses the CV figures. Pick one
+      story and I'll align site, CV and LinkedIn.
 - [ ] **Case studies**: the two expandables (Zodia headless handshake, Playroll QA
       from zero) are drafted from CV facts; review the narratives.
 - [x] **Lighthouse line**: measured 100/100/100/100 on the pages.dev deployment

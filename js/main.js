@@ -3,41 +3,51 @@ const EMAIL = ["qasim.mahmood13", "alumni.imperial.ac.uk"].join("@");
 
 // ---------------------------------------------------------------------------
 // Certifications: add a cert by adding one line to the relevant group.
+// Optional fields: id (credential ID) and url (public verify link; the card
+// becomes a link when present).
 // ---------------------------------------------------------------------------
 const CERTIFICATIONS = [
   {
     group: "Cloud",
     items: [
-      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services" },
-      { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services" },
-      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services" },
-      { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft" },
-      { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft" },
-      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft" },
-      { name: "Cloud Digital Leader", issuer: "Google Cloud" },
+      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft", issued: "Mar 2025", id: "8F3AE15DB1DC7FD" },
+      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", issued: "Dec 2024" },
+      { name: "Cloud Digital Leader", issuer: "Google Cloud", issued: "Dec 2024" },
+      { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft", issued: "Nov 2024", id: "FA52407D66AFD830" },
+      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024" },
+      { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services", issued: "Oct 2024" },
+      { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", issued: "Jan 2022", id: "I126-0820" },
     ],
   },
   {
     group: "Testing",
     items: [
-      { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB" },
-      { name: "ISTQB Foundation Level Agile Tester", issuer: "ISTQB" },
-      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB" },
+      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB", issued: "Nov 2021", id: "00525854" },
+      { name: "ISTQB Certified Agile Tester", issuer: "ISTQB", issued: "Oct 2019", id: "00466214" },
+      { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB", issued: "Apr 2019", id: "00449756" },
     ],
   },
   {
     group: "DevOps",
     items: [
-      { name: "GitHub Actions", issuer: "GitHub" },
-      { name: "GitHub Advanced Security", issuer: "GitHub" },
-      { name: "GitHub Foundations", issuer: "GitHub" },
+      { name: "GitHub Actions", issuer: "GitHub", issued: "Sep 2024" },
+      { name: "GitHub Advanced Security", issuer: "GitHub", issued: "Aug 2024" },
+      { name: "GitHub Foundations", issuer: "GitHub", issued: "Aug 2024" },
+    ],
+  },
+  {
+    group: "AI",
+    items: [
+      { name: "Claude Code Essentials", issuer: "ExamPro", issued: "Apr 2026", id: "JJq1XXOyFjmXhO-EHHRa3g5d3b" },
+      { name: "AI Fluency: Framework & Foundations", issuer: "Anthropic", issued: "Mar 2026", id: "gw79erqmijoa" },
+      { name: "Claude Code in Action", issuer: "Anthropic", issued: "Mar 2026", id: "3fj26my5u2n8" },
+      { name: "Claude 101", issuer: "Anthropic", issued: "Mar 2026", id: "ee9v2q62esni" },
     ],
   },
   {
     group: "Other",
     items: [
-      { name: "Claude Code Essentials", issuer: "Anthropic" },
-      { name: "Islamic Finance", issuer: "AUSCIF" },
+      { name: "Islamic Finance Professional Development Course", issuer: "AUSCIF", issued: "May 2020" },
     ],
   },
 ];
@@ -56,19 +66,31 @@ function renderCertifications() {
 
     const grid = document.createElement("ul");
     grid.className = "mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3";
-    for (const { name, issuer } of items) {
+    for (const { name, issuer, issued, id, url } of items) {
       const li = document.createElement("li");
-      li.className = "border border-line dark:border-line-dark px-4 py-3";
+      li.className = "border border-line dark:border-line-dark";
 
       const certName = document.createElement("p");
       certName.className = "text-sm font-medium leading-snug";
       certName.textContent = name;
 
-      const certIssuer = document.createElement("p");
-      certIssuer.className = "mt-1 font-mono text-xs text-ink-muted dark:text-fog-muted";
-      certIssuer.textContent = issuer;
+      const certMeta = document.createElement("p");
+      certMeta.className = "mt-1 font-mono text-xs text-ink-muted dark:text-fog-muted";
+      certMeta.textContent = issued ? issuer + " / " + issued : issuer;
 
-      li.append(certName, certIssuer);
+      const inner = url ? document.createElement("a") : document.createElement("div");
+      inner.className = "block px-4 py-3";
+      if (url) inner.href = url;
+      inner.append(certName, certMeta);
+
+      if (id) {
+        const certId = document.createElement("p");
+        certId.className = "mt-1 break-all font-mono text-xs text-ink-muted opacity-70 dark:text-fog-muted";
+        certId.textContent = "id " + id;
+        inner.appendChild(certId);
+      }
+
+      li.appendChild(inner);
       grid.appendChild(li);
     }
     section.appendChild(grid);

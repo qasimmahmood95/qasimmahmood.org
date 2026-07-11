@@ -11,8 +11,17 @@ test.describe("page structure", () => {
 
   test("renders every certification group and card", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#certs-root h3")).toHaveText(["Cloud", "Testing", "DevOps", "Other"]);
-    await expect(page.locator("#certs-root li")).toHaveCount(15);
+    await expect(page.locator("#certs-root h3")).toHaveText(["Cloud", "Testing", "DevOps", "AI", "Other"]);
+    await expect(page.locator("#certs-root li")).toHaveCount(18);
+    // Credential IDs render where known
+    await expect(page.locator("#certs-root")).toContainText("id 00525854");
+    await expect(page.locator("#certs-root")).toContainText("ExamPro / Apr 2026");
+  });
+
+  test("renders colleague testimonials", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("#experience figure blockquote")).toHaveCount(3);
+    await expect(page.locator("#experience figcaption").first()).toContainText("CTO");
   });
 
   test("experience timeline is in reverse chronological order", async ({ page }) => {
