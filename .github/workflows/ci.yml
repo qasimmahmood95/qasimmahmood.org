@@ -4,9 +4,13 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    # Weekly production check: Monday 07:00 UTC
+    - cron: "0 7 * * 1"
 
 jobs:
   validate:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +29,9 @@ jobs:
       - name: Validate HTML
         run: npx --yes html-validate index.html 404.html links.html
 
+      - name: Check CSP hashes against inline scripts
+        run: node scripts/check-csp.mjs
+
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
@@ -39,8 +46,43 @@ jobs:
             index.html 404.html links.html
           fail: true
 
-      - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
 
       - name: Run Playwright suite
         run: npm test
+
+  # Weekly run against the deployed site: catches deployment drift, broken
+  # behaviour in production, and rot in the external credential links.
+  production:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright suite against production
+        run: npm test
+        env:
+          BASE_URL: https://qasimmahmood-org.pages.dev
+
+      - name: Check external links, including credential verify pages
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --root-dir ${{ github.workspace }}
+            --exclude 'linkedin\.com'
+            --exclude 'qasimmahmood\.org'
+            index.html 404.html links.html js/main.js js/links.js
+          fail: true
