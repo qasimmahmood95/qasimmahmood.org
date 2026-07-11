@@ -28,9 +28,12 @@ are reviews and launch steps rather than gaps.
       phone number removed. Regenerate it whenever the CV changes.
 - [ ] **OG image**: `assets/og.png` is generated (1200x630). After deploying, paste the
       site URL into LinkedIn's Post Inspector to confirm the card renders.
-- [x] **Testimonials**: three excerpts from LinkedIn recommendations (Mario Husha,
-      Lucie Kovacsova, Rafal Ozog) now sit under the experience timeline. Confirm
-      the picks and the trimming.
+- [x] **Testimonials**: all seven colleague recommendations quoted in full under
+      the experience timeline, attributed as "current title" + "worked together
+      at X". David Rolls excluded (recruiter-client, not a colleague). To review:
+      obvious typos were quietly corrected ("was great team member", "work this",
+      "know no bounds", "aid anyway", "a high quality work"), and Joshua Brown's
+      "worked together at Playroll" is inferred from the recommendation date.
 - [x] **Certification verify links**: 17 of 18 linked and confirmed resolving.
       AUSCIF has no public credential page, so its card stays plain.
 - [ ] **ISTQB links point at Google Drive scans** (what LinkedIn uses). Cleaner

@@ -23,10 +23,13 @@ test.describe("page structure", () => {
     await expect(verifyLinks.first()).toHaveAttribute("rel", "noopener");
   });
 
-  test("renders colleague testimonials", async ({ page }) => {
+  test("renders colleague testimonials with honest attribution", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#experience figure blockquote")).toHaveCount(3);
-    await expect(page.locator("#experience figcaption").first()).toContainText("CTO");
+    await expect(page.locator("#experience figure blockquote")).toHaveCount(7);
+    // Attribution separates current title from where the collaboration happened
+    const first = page.locator("#experience figcaption").first();
+    await expect(first).toContainText("CTO at Lovey");
+    await expect(first).toContainText("worked together at Playroll");
   });
 
   test("experience timeline is in reverse chronological order", async ({ page }) => {
