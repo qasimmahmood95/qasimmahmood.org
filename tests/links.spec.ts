@@ -3,11 +3,11 @@ import { test, expect } from "@playwright/test";
 test.describe("links page", () => {
   test.use({ viewport: { width: 375, height: 812 } });
 
-  test("serves at the clean /links URL with all four buttons in order", async ({ page }) => {
+  test("serves at the clean /links URL with all five buttons in order", async ({ page }) => {
     await page.goto("/links");
     await expect(page).toHaveTitle(/Links/);
     const labels = page.locator("#links-root a > span:first-child");
-    await expect(labels).toHaveText(["GitHub", "LinkedIn", "Main site", "Email"]);
+    await expect(labels).toHaveText(["GitHub", "LinkedIn", "Instagram", "Main site", "Email"]);
   });
 
   test("buttons are comfortably tappable", async ({ page }) => {
