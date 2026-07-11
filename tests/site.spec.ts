@@ -16,9 +16,9 @@ test.describe("page structure", () => {
     // Credential IDs render where known
     await expect(page.locator("#certs-root")).toContainText("id 00525854");
     await expect(page.locator("#certs-root")).toContainText("ExamPro / Apr 2026");
-    // Cards with verify URLs are links that open safely in a new tab
+    // Every card except AUSCIF (no public credential) links to its verify page
     const verifyLinks = page.locator("#certs-root a[href]");
-    await expect(verifyLinks).toHaveCount(9);
+    await expect(verifyLinks).toHaveCount(17);
     await expect(verifyLinks.first()).toHaveAttribute("target", "_blank");
     await expect(verifyLinks.first()).toHaveAttribute("rel", "noopener");
   });

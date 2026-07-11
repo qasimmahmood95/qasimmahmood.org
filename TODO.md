@@ -31,11 +31,11 @@ are reviews and launch steps rather than gaps.
 - [x] **Testimonials**: three excerpts from LinkedIn recommendations (Mario Husha,
       Lucie Kovacsova, Rafal Ozog) now sit under the experience timeline. Confirm
       the picks and the trimming.
-- [ ] **Certification verify links**: 9 of 18 done (extracted from the LinkedIn
-      certification markup and confirmed resolving): both Microsoft, AWS SAA and
-      MLE-A, Google CDL, ExamPro, and the three Anthropic courses. Still needed:
-      AWS AI Practitioner, GitHub x3, AZ-900, ISTQB x3, AUSCIF. Paste the rest of
-      the LinkedIn certifications element and I'll extract them the same way.
+- [x] **Certification verify links**: 17 of 18 linked and confirmed resolving.
+      AUSCIF has no public credential page, so its card stays plain.
+- [ ] **ISTQB links point at Google Drive scans** (what LinkedIn uses). Cleaner
+      option: register on the official ISTQB Successful Candidate Register
+      (scr.istqb.org) and swap in those entries.
 - [ ] **Metric discrepancies to reconcile**: LinkedIn About says 6 funds + 12 ETFs
       and deposits over £3.5m, team to "over 20", "over 200" interviews; the
       LinkedIn Moneybox entry says £2.4m and "over 150"; the CV says £2.4m,

@@ -15,24 +15,24 @@ const CERTIFICATIONS = [
       { name: "Cloud Digital Leader", issuer: "Google Cloud", issued: "Dec 2024", url: "https://www.credly.com/badges/08ff3b9a-695f-40d2-be71-980dd78bffea" },
       { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft", issued: "Nov 2024", id: "FA52407D66AFD830", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/FA52407D66AFD830?sharingId=966D4EA02489B5E" },
       { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/1c38a59a-512b-47e7-9b1d-5719b6ef7769" },
-      { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services", issued: "Oct 2024" },
-      { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", issued: "Jan 2022", id: "I126-0820" },
+      { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/b3cea168-4cdc-417d-b278-70ccd435a42c" },
+      { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", issued: "Jan 2022", id: "I126-0820", url: "https://www.credly.com/badges/10a9f342-006a-44b0-b2e1-c26a8f959b6e" },
     ],
   },
   {
     group: "Testing",
     items: [
-      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB", issued: "Nov 2021", id: "00525854" },
-      { name: "ISTQB Certified Agile Tester", issuer: "ISTQB", issued: "Oct 2019", id: "00466214" },
-      { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB", issued: "Apr 2019", id: "00449756" },
+      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB", issued: "Nov 2021", id: "00525854", url: "https://drive.google.com/file/d/1jt3eNr-nKJ7Wr9rKbLNaBu23tF7DM78n/view?usp=sharing" },
+      { name: "ISTQB Certified Agile Tester", issuer: "ISTQB", issued: "Oct 2019", id: "00466214", url: "https://drive.google.com/open?id=1NueEe7ICS8Xaa1cJkQBcUNRxzJ9HYOdB" },
+      { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB", issued: "Apr 2019", id: "00449756", url: "https://drive.google.com/open?id=1SaLiAy0ZSOvbWyNOtZbHq78tzeRb2waA" },
     ],
   },
   {
     group: "DevOps",
     items: [
-      { name: "GitHub Actions", issuer: "GitHub", issued: "Sep 2024" },
-      { name: "GitHub Advanced Security", issuer: "GitHub", issued: "Aug 2024" },
-      { name: "GitHub Foundations", issuer: "GitHub", issued: "Aug 2024" },
+      { name: "GitHub Actions", issuer: "GitHub", issued: "Sep 2024", url: "https://www.credly.com/badges/d80cfca8-074c-4d3a-abba-4c7b9fc7a531" },
+      { name: "GitHub Advanced Security", issuer: "GitHub", issued: "Aug 2024", url: "https://www.credly.com/badges/c12212fc-8c78-4f83-b355-51c1ebc3a096" },
+      { name: "GitHub Foundations", issuer: "GitHub", issued: "Aug 2024", url: "https://www.credly.com/badges/19aa34a2-b30a-4695-86da-4b1bc87860d8" },
     ],
   },
   {
