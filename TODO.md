@@ -34,7 +34,7 @@ are reviews and launch steps rather than gaps.
       from zero) are drafted from CV facts; review the narratives.
 - [ ] **Lighthouse line**: after launch, run PageSpeed on the live site and add the
       score to the footer colophon (TODO comment marks the spot).
-- [x] **README badge**: points at `qasimmahmood95/q-website`.
+- [x] **README badge**: points at `qasimmahmood95/qasimmahmood.org`.
 
 ## Before/at launch
 

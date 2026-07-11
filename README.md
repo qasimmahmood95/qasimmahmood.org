@@ -1,6 +1,6 @@
 # qasimmahmood.org
 
-![CI](https://github.com/qasimmahmood95/q-website/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/qasimmahmood95/qasimmahmood.org/actions/workflows/ci.yml/badge.svg)
 
 Single-page personal site for Qasim Mahmood, Senior SDET in regulated fintech and digital assets.
 
