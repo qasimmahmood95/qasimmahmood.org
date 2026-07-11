@@ -1,0 +1,5 @@
+# Old WordPress URLs that may still have inbound links or search entries
+/blog / 301
+/blog/* / 301
+/feed / 301
+/comments/feed / 301

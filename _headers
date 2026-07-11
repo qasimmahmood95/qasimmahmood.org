@@ -1,0 +1,10 @@
+# Security headers, applied by Cloudflare Pages.
+# The sha256 hash covers the inline theme-init script (identical on every
+# page); scripts/check-csp.mjs verifies it stays in sync in CI.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-WQZHpP/fwM8kbnz0f2WsmBc2WjXZsSglJsTtJM4blTs='; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
