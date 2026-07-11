@@ -11,8 +11,13 @@ test.describe("page structure", () => {
 
   test("renders every certification group and card", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#certs-root h3")).toHaveText(["Cloud", "Testing", "DevOps", "AI", "Other"]);
+    await expect(page.locator("#certs-root h3")).toHaveText(["Highlights", "Cloud", "Testing", "DevOps", "AI", "Other"]);
     await expect(page.locator("#certs-root li")).toHaveCount(18);
+    // The flagship certs lead, ordered by rank, styled like index contours
+    const highlights = page.locator("#certs-root div").first().locator("li");
+    await expect(highlights).toHaveCount(5);
+    await expect(highlights.first()).toContainText("ISTQB Advanced Level Test Analyst");
+    await expect(highlights.first()).toHaveClass(/border-l-accent/);
     // Credential IDs render where known
     await expect(page.locator("#certs-root")).toContainText("id 00525854");
     await expect(page.locator("#certs-root")).toContainText("ExamPro / Apr 2026");

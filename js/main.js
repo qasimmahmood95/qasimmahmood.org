@@ -3,18 +3,19 @@ const EMAIL = ["qasim.mahmood13", "alumni.imperial.ac.uk"].join("@");
 
 // ---------------------------------------------------------------------------
 // Certifications: add a cert by adding one line to the relevant group.
-// Optional fields: id (credential ID) and url (public verify link; the card
-// becomes a link when present).
+// Optional fields: id (credential ID), url (public verify link; the card
+// becomes a link when present), and featured (rank; pulls the cert into the
+// highlights row, styled like the map's index contours).
 // ---------------------------------------------------------------------------
 const CERTIFICATIONS = [
   {
     group: "Cloud",
     items: [
-      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft", issued: "Mar 2025", id: "8F3AE15DB1DC7FD", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/8F3AE15DB1DC7FD?sharingId" },
-      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", issued: "Dec 2024", url: "https://www.credly.com/badges/82b119a1-ddf4-46ad-aba1-bc160d516c86" },
+      { name: "Security, Compliance & Identity Fundamentals (SC-900)", issuer: "Microsoft", issued: "Mar 2025", id: "8F3AE15DB1DC7FD", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/8F3AE15DB1DC7FD?sharingId", featured: 4 },
+      { name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", issued: "Dec 2024", url: "https://www.credly.com/badges/82b119a1-ddf4-46ad-aba1-bc160d516c86", featured: 2 },
       { name: "Cloud Digital Leader", issuer: "Google Cloud", issued: "Dec 2024", url: "https://www.credly.com/badges/08ff3b9a-695f-40d2-be71-980dd78bffea" },
       { name: "Azure AI Fundamentals (AI-900)", issuer: "Microsoft", issued: "Nov 2024", id: "FA52407D66AFD830", url: "https://learn.microsoft.com/api/credentials/share/en-gb/QasimMahmood-6022/FA52407D66AFD830?sharingId=966D4EA02489B5E" },
-      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/1c38a59a-512b-47e7-9b1d-5719b6ef7769" },
+      { name: "AWS Certified Machine Learning Engineer - Associate", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/1c38a59a-512b-47e7-9b1d-5719b6ef7769", featured: 3 },
       { name: "AWS Certified AI Practitioner", issuer: "Amazon Web Services", issued: "Oct 2024", url: "https://www.credly.com/badges/b3cea168-4cdc-417d-b278-70ccd435a42c" },
       { name: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", issued: "Jan 2022", id: "I126-0820", url: "https://www.credly.com/badges/10a9f342-006a-44b0-b2e1-c26a8f959b6e" },
     ],
@@ -22,7 +23,7 @@ const CERTIFICATIONS = [
   {
     group: "Testing",
     items: [
-      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB", issued: "Nov 2021", id: "00525854", url: "https://drive.google.com/file/d/1jt3eNr-nKJ7Wr9rKbLNaBu23tF7DM78n/view?usp=sharing" },
+      { name: "ISTQB Advanced Level Test Analyst", issuer: "ISTQB", issued: "Nov 2021", id: "00525854", url: "https://drive.google.com/file/d/1jt3eNr-nKJ7Wr9rKbLNaBu23tF7DM78n/view?usp=sharing", featured: 1 },
       { name: "ISTQB Certified Agile Tester", issuer: "ISTQB", issued: "Oct 2019", id: "00466214", url: "https://drive.google.com/open?id=1NueEe7ICS8Xaa1cJkQBcUNRxzJ9HYOdB" },
       { name: "ISTQB Certified Tester Foundation Level", issuer: "ISTQB", issued: "Apr 2019", id: "00449756", url: "https://drive.google.com/open?id=1SaLiAy0ZSOvbWyNOtZbHq78tzeRb2waA" },
     ],
@@ -38,7 +39,7 @@ const CERTIFICATIONS = [
   {
     group: "AI",
     items: [
-      { name: "Claude Code Essentials", issuer: "ExamPro", issued: "Apr 2026", id: "JJq1XXOyFjmXhO-EHHRa3g5d3b", url: "https://app.exampro.co/validate/badge/JJq1XXOyFjmXhO-EHHRa3g5d3b" },
+      { name: "Claude Code Essentials", issuer: "ExamPro", issued: "Apr 2026", id: "JJq1XXOyFjmXhO-EHHRa3g5d3b", url: "https://app.exampro.co/validate/badge/JJq1XXOyFjmXhO-EHHRa3g5d3b", featured: 5 },
       { name: "AI Fluency: Framework & Foundations", issuer: "Anthropic", issued: "Mar 2026", id: "gw79erqmijoa", url: "https://verify.skilljar.com/c/gw79erqmijoa" },
       { name: "Claude Code in Action", issuer: "Anthropic", issued: "Mar 2026", id: "3fj26my5u2n8", url: "https://verify.skilljar.com/c/3fj26my5u2n8" },
       { name: "Claude 101", issuer: "Anthropic", issued: "Mar 2026", id: "ee9v2q62esni", url: "https://verify.skilljar.com/c/ee9v2q62esni" },
@@ -52,52 +53,76 @@ const CERTIFICATIONS = [
   },
 ];
 
+function certCard({ name, issuer, issued, id, url }, isFeatured) {
+  const li = document.createElement("li");
+  li.className = isFeatured
+    ? "border border-line border-l-2 border-l-accent dark:border-line-dark dark:border-l-accent-bright"
+    : "border border-line dark:border-line-dark";
+
+  const certName = document.createElement("p");
+  certName.className = isFeatured
+    ? "text-base font-semibold leading-snug"
+    : "text-sm font-medium leading-snug";
+  certName.textContent = name;
+
+  const certMeta = document.createElement("p");
+  certMeta.className = "mt-1 font-mono text-xs text-ink-muted dark:text-fog-muted";
+  certMeta.textContent = issued ? issuer + " / " + issued : issuer;
+
+  const inner = url ? document.createElement("a") : document.createElement("div");
+  inner.className = "block px-4 py-3";
+  if (url) {
+    inner.href = url;
+    inner.target = "_blank";
+    inner.rel = "noopener";
+    inner.title = "Verify credential";
+  }
+  inner.append(certName, certMeta);
+
+  if (id) {
+    const certId = document.createElement("p");
+    certId.className = "mt-1 break-all font-mono text-xs text-ink-muted opacity-70 dark:text-fog-muted";
+    certId.textContent = "id " + id;
+    inner.appendChild(certId);
+  }
+
+  li.appendChild(inner);
+  return li;
+}
+
 function renderCertifications() {
   const root = document.getElementById("certs-root");
   if (!root) return;
 
-  for (const { group, items } of CERTIFICATIONS) {
+  function groupBlock(title, accent) {
     const section = document.createElement("div");
-
     const heading = document.createElement("h3");
-    heading.className = "font-mono text-sm font-semibold uppercase tracking-wider";
-    heading.textContent = group;
+    heading.className = "font-mono text-sm font-semibold uppercase tracking-wider" +
+      (accent ? " text-accent dark:text-accent-bright" : "");
+    heading.textContent = title;
     section.appendChild(heading);
+    return section;
+  }
 
+  // Highlights first: the index contours of the certification map
+  const featured = CERTIFICATIONS.flatMap((g) => g.items.filter((i) => i.featured))
+    .sort((a, b) => a.featured - b.featured);
+  if (featured.length) {
+    const section = groupBlock("Highlights", true);
+    const grid = document.createElement("ul");
+    grid.className = "mt-3 grid gap-3 sm:grid-cols-2";
+    for (const item of featured) grid.appendChild(certCard(item, true));
+    section.appendChild(grid);
+    root.appendChild(section);
+  }
+
+  for (const { group, items } of CERTIFICATIONS) {
+    const rest = items.filter((i) => !i.featured);
+    if (rest.length === 0) continue;
+    const section = groupBlock(group, false);
     const grid = document.createElement("ul");
     grid.className = "mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3";
-    for (const { name, issuer, issued, id, url } of items) {
-      const li = document.createElement("li");
-      li.className = "border border-line dark:border-line-dark";
-
-      const certName = document.createElement("p");
-      certName.className = "text-sm font-medium leading-snug";
-      certName.textContent = name;
-
-      const certMeta = document.createElement("p");
-      certMeta.className = "mt-1 font-mono text-xs text-ink-muted dark:text-fog-muted";
-      certMeta.textContent = issued ? issuer + " / " + issued : issuer;
-
-      const inner = url ? document.createElement("a") : document.createElement("div");
-      inner.className = "block px-4 py-3";
-      if (url) {
-        inner.href = url;
-        inner.target = "_blank";
-        inner.rel = "noopener";
-        inner.title = "Verify credential";
-      }
-      inner.append(certName, certMeta);
-
-      if (id) {
-        const certId = document.createElement("p");
-        certId.className = "mt-1 break-all font-mono text-xs text-ink-muted opacity-70 dark:text-fog-muted";
-        certId.textContent = "id " + id;
-        inner.appendChild(certId);
-      }
-
-      li.appendChild(inner);
-      grid.appendChild(li);
-    }
+    for (const item of rest) grid.appendChild(certCard(item, false));
     section.appendChild(grid);
     root.appendChild(section);
   }
