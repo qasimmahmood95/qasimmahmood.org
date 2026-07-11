@@ -19,8 +19,12 @@ js/main.js      dark-mode toggle, mobile nav, certifications data, email links,
                 command palette (ctrl/cmd+k)
 assets/         og.png social card, public CV PDF (phone number removed),
                 topo-*.svg contour tiles for the animated background
-scripts/        generate-topo.mjs regenerates the contour tiles (plain Node)
+scripts/        generate-topo.mjs regenerates the contour tiles;
+                check-csp.mjs keeps _headers hashes in sync (both plain Node)
 tests/          Playwright suite covering the site's behaviour
+_headers        security headers (CSP with hashed inline scripts, HSTS, etc.)
+_redirects      old WordPress URLs redirect home
+robots.txt, sitemap.xml
 ```
 
 The animated topographic background is CSS-driven: three fixed page-wide
@@ -70,11 +74,14 @@ npm test
 
 It covers section structure, certification rendering, email obfuscation,
 theme persistence, the command palette, scroll effects, the mobile nav,
-and the 404 page. The config starts its own static server, or reuses one
-already running on port 8123.
+and the 404 page, in Chromium, Firefox and WebKit. The config starts its
+own static server, or reuses one already running on port 8123. Run it
+against a deployment with `BASE_URL=https://... npm test`.
 
 ## CI
 
 [.github/workflows/ci.yml](.github/workflows/ci.yml) runs on every push and PR:
-CSS build, HTML validation (`html-validate`), a link check (`lychee`,
-LinkedIn excluded because it blocks bots), and the Playwright suite.
+CSS build, HTML validation (`html-validate`), a CSP hash check, a link check
+(`lychee`, LinkedIn excluded because it blocks bots), and the Playwright
+suite in three browsers. A scheduled weekly job runs the suite against the
+deployed site and link-checks the external credential verify pages.
